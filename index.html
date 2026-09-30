@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>इतिहास Anime — Indian History Characters in Anime Style</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Outfit:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Particle Canvas Background -->
+    <canvas id="particles"></canvas>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <span class="brand-icon">⚔️</span>
+            <span class="brand-text">इतिहास<span class="brand-sub">Anime</span></span>
+        </div>
+        <div class="nav-links">
+            <a href="#home" class="nav-link active">Home</a>
+            <a href="#gallery" class="nav-link">Gallery</a>
+            <a href="#video" class="nav-link">🎬 Video</a>
+            <a href="#generate" class="nav-link">Generate</a>
+            <a href="#about" class="nav-link">About</a>
+        </div>
+        <button class="nav-toggle" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">🏛️ Where History Meets Anime</div>
+            <h1 class="hero-title">
+                <span class="title-line">Legends of</span>
+                <span class="title-line gradient-text">Bharat</span>
+                <span class="title-line">Reimagined</span>
+            </h1>
+            <p class="hero-desc">
+                Experience India's greatest warriors, kings, queens, and strategists 
+                like never before — as stunning anime characters & cinematic stories 
+                brought to life with historically accurate detail.
+            </p>
+            <div class="hero-actions">
+                <a href="#gallery" class="btn btn-primary">
+                    <span>Explore Gallery</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+                <a href="#video" class="btn btn-secondary">
+                    <span>🎬 Watch Stories</span>
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-num" data-target="7">0</span>
+                    <span class="stat-label">Characters</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat">
+                    <span class="stat-num" data-target="3000">0</span>
+                    <span class="stat-label">Years of History</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat">
+                    <span class="stat-num" data-target="100">0</span>
+                    <span class="stat-label">% Accurate</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="hero-carousel">
+                <div class="carousel-track">
+                    <img src="images/chandragupta_maurya.jpg" alt="Chandragupta Maurya" class="carousel-img active">
+                    <img src="images/rani_lakshmibai.jpg" alt="Rani Lakshmibai" class="carousel-img">
+                    <img src="images/shivaji_maharaj.jpg" alt="Shivaji Maharaj" class="carousel-img">
+                    <img src="images/maharana_pratap.jpg" alt="Maharana Pratap" class="carousel-img">
+                </div>
+                <div class="carousel-glow"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <div class="section-header">
+            <span class="section-tag">🎨 Character Gallery</span>
+            <h2 class="section-title">The Legends</h2>
+            <p class="section-desc">Click on any character to explore their story</p>
+        </div>
+
+        <div class="filter-bar">
+            <button class="filter-btn active" data-filter="all">All Eras</button>
+            <button class="filter-btn" data-filter="ancient">Ancient</button>
+            <button class="filter-btn" data-filter="medieval">Medieval</button>
+            <button class="filter-btn" data-filter="modern">Modern</button>
+        </div>
+
+        <div class="gallery-grid">
+            <div class="card" data-era="ancient" data-character="chandragupta">
+                <div class="card-image">
+                    <img src="images/chandragupta_maurya.jpg" alt="Chandragupta Maurya" loading="lazy">
+                    <div class="card-overlay"><span class="card-era-badge">340–298 BCE</span></div>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-name">Chandragupta Maurya</h3>
+                    <p class="card-title-role">Founder of the Maurya Empire</p>
+                    <div class="card-tags"><span class="tag">Warrior</span><span class="tag">Emperor</span><span class="tag">Unifier</span></div>
+                </div>
+            </div>
+
+            <div class="card" data-era="ancient" data-character="chanakya">
+                <div class="card-image">
+                    <img src="images/chanakya.jpg" alt="Chanakya" loading="lazy">
+                    <div class="card-overlay"><span class="card-era-badge">375–283 BCE</span></div>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-name">Chanakya</h3>
+                    <p class="card-title-role">The Master Strategist</p>
+                    <div class="card-tags"><span class="tag">Philosopher</span><span class="tag">Strategist</span><span class="tag">Teacher</span></div>
+                </div>
+            </div>
+
+            <div class="card" data-era="ancient" data-character="ashoka">
+                <div class="card-image">
+                    <img src="images/ashoka_the_great.jpg" alt="Ashoka the Great" loading="lazy">
+                    <div class="card-overlay"><span class="card-era-badge">304–232 BCE</span></div>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-name">Ashoka the Great</h3>
+                    <p class="card-title-role">Emperor of Peace & Dharma</p>
+                    <div class="card-tags"><span class="tag">Emperor</span><span class="tag">Buddhist</span><span class="tag">Reformer</span></div>
+                </div>
+            </div>
+
+            <div class="card" data-era="medieval" data-character="prithviraj">
+                <div class="card-image">
+                    <img src="images/prithviraj_chauhan.jpg" alt="Prithviraj Chauhan" loading="lazy">
+                    <div class="card-overlay"><span class="card-era-badge">1166–1192 CE</span></div>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-name">Prithviraj Chauhan</h3>
+                    <p class="card-title-role">The Last Great Rajput King</p>
+                    <div class="card-tags"><span class="tag">Rajput</span><span class="tag">Archer</span><span class="tag">King</span></div>
+                </div>
+            </div>
+
+            <div class="card" data-era="medieval" data-character="shivaji">
+                <div class="card-image">
+                    <img src="images/shivaji_maharaj.jpg" alt="Shivaji Maharaj" loading="lazy">
+                    <div class="card-overlay"><span class="card-era-badge">1630–1680 CE</span></div>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-name">Chhatrapati Shivaji</h3>
+                    <p class="card-title-role">Founder of the Maratha Empire</p>
+                    <div class="card-tags"><span class="tag">Maratha</span><span class="tag">Warrior King</span><span class="tag">Naval Pioneer</span></div>
+                </div>
+            </div>
+
+            <div class="card" data-era="modern" data-character="lakshmibai">
+                <div class="card-image">
+                    <img src="images/rani_lakshmibai.jpg" alt="Rani Lakshmibai" loading="lazy">
+                    <div class="card-overlay"><span class="card-era-badge">1828–1858 CE</span></div>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-name">Rani Lakshmibai</h3>
+                    <p class="card-title-role">The Warrior Queen of Jhansi</p>
+                    <div class="card-tags"><span class="tag">Queen</span><span class="tag">Freedom Fighter</span><span class="tag">Warrior</span></div>
+                </div>
+            </div>
+
+            <div class="card" data-era="medieval" data-character="maharana_pratap">
+                <div class="card-image">
+                    <img src="images/maharana_pratap.jpg" alt="Maharana Pratap" loading="lazy">
+                    <div class="card-overlay"><span class="card-era-badge">1540–1597 CE</span></div>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-name">Maharana Pratap</h3>
+                    <p class="card-title-role">The Pride of Mewar</p>
+                    <div class="card-tags"><span class="tag">Rajput</span><span class="tag">Warrior</span><span class="tag">Chetak</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Character Detail Modal -->
+    <div class="modal" id="characterModal">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <div class="modal-grid">
+                <div class="modal-image"><img id="modalImg" src="" alt=""></div>
+                <div class="modal-info">
+                    <span class="modal-era" id="modalEra"></span>
+                    <h2 class="modal-name" id="modalName"></h2>
+                    <p class="modal-role" id="modalRole"></p>
+                    <div class="modal-divider"></div>
+                    <p class="modal-bio" id="modalBio"></p>
+                    <div class="modal-stats-grid" id="modalStats"></div>
+                    <div class="modal-quote" id="modalQuote"></div>
+                    <button class="btn btn-primary btn-watch-story" style="margin-top:16px;" onclick="playStoryFromModal()">
+                        🎬 Watch Anime Story
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== ANIME VIDEO STORY SECTION ===== -->
+    <section id="video" class="video-section">
+        <div class="section-header">
+            <span class="section-tag">🎬 Anime Video Stories</span>
+            <h2 class="section-title">Watch History Come Alive</h2>
+            <p class="section-desc">Select a legendary character and watch their epic story unfold as an anime cinematic</p>
+        </div>
+
+        <div class="video-container">
+            <!-- Character Selection for Video -->
+            <div class="video-selector" id="videoSelector">
+                <div class="video-char-grid">
+                    <div class="video-char-card" data-video="chandragupta">
+                        <img src="images/chandragupta_maurya.jpg" alt="">
+                        <div class="video-char-info">
+                            <h4>Chandragupta Maurya</h4>
+                            <p>The Rise of an Empire</p>
+                            <span class="video-duration">⏱️ 2:30 min</span>
+                        </div>
+                        <div class="play-overlay">▶</div>
+                    </div>
+                    <div class="video-char-card" data-video="chanakya">
+                        <img src="images/chanakya.jpg" alt="">
+                        <div class="video-char-info">
+                            <h4>Chanakya</h4>
+                            <p>The Mastermind's Oath</p>
+                            <span class="video-duration">⏱️ 2:30 min</span>
+                        </div>
+                        <div class="play-overlay">▶</div>
+                    </div>
+                    <div class="video-char-card" data-video="ashoka">
+                        <img src="images/ashoka_the_great.jpg" alt="">
+                        <div class="video-char-info">
+                            <h4>Ashoka the Great</h4>
+                            <p>From Warrior to Saint</p>
+                            <span class="video-duration">⏱️ 3:00 min</span>
+                        </div>
+                        <div class="play-overlay">▶</div>
+                    </div>
+                    <div class="video-char-card" data-video="prithviraj">
+                        <img src="images/prithviraj_chauhan.jpg" alt="">
+                        <div class="video-char-info">
+                            <h4>Prithviraj Chauhan</h4>
+                            <p>The Arrow of Justice</p>
+                            <span class="video-duration">⏱️ 2:30 min</span>
+                        </div>
+                        <div class="play-overlay">▶</div>
+                    </div>
+                    <div class="video-char-card" data-video="shivaji">
+                        <img src="images/shivaji_maharaj.jpg" alt="">
+                        <div class="video-char-info">
+                            <h4>Shivaji Maharaj</h4>
+                            <p>The Tiger of Maharashtra</p>
+                            <span class="video-duration">⏱️ 3:00 min</span>
+                        </div>
+                        <div class="play-overlay">▶</div>
+                    </div>
+                    <div class="video-char-card" data-video="lakshmibai">
+                        <img src="images/rani_lakshmibai.jpg" alt="">
+                        <div class="video-char-info">
+                            <h4>Rani Lakshmibai</h4>
+                            <p>The Queen Who Fought</p>
+                            <span class="video-duration">⏱️ 2:30 min</span>
+                        </div>
+                        <div class="play-overlay">▶</div>
+                    </div>
+                    <div class="video-char-card" data-video="maharana_pratap">
+                        <img src="images/maharana_pratap.jpg" alt="">
+                        <div class="video-char-info">
+                            <h4>Maharana Pratap</h4>
+                            <p>The Unconquered King</p>
+                            <span class="video-duration">⏱️ 2:30 min</span>
+                        </div>
+                        <div class="play-overlay">▶</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cinematic Video Player -->
+            <div class="cinema-player" id="cinemaPlayer" style="display:none;">
+                <div class="cinema-letterbox top"></div>
+
+                <!-- Main Screen -->
+                <div class="cinema-screen" id="cinemaScreen">
+                    <div class="cinema-bg" id="cinemaBg"></div>
+                    <div class="cinema-particles" id="cinemaParticles"></div>
+                    <div class="cinema-overlay" id="cinemaOverlay"></div>
+
+                    <!-- Scenes rendered here dynamically -->
+                    <div class="cinema-chapter" id="cinemaChapter"></div>
+                    <div class="cinema-title" id="cinemaTitle"></div>
+                    <div class="cinema-subtitle" id="cinemaSubtitle"></div>
+                    <div class="cinema-narration" id="cinemaNarration"></div>
+                    <div class="cinema-character-img" id="cinemaCharImg"></div>
+                    <div class="cinema-quote" id="cinemaQuote"></div>
+                    <div class="cinema-credit" id="cinemaCredit"></div>
+                </div>
+
+                <div class="cinema-letterbox bottom"></div>
+
+                <!-- Controls -->
+                <div class="cinema-controls">
+                    <button class="cinema-btn" id="cinemaPlayPause" title="Play/Pause">⏸️</button>
+                    <div class="cinema-progress">
+                        <div class="cinema-progress-bar" id="cinemaProgressBar"></div>
+                        <div class="cinema-chapter-dots" id="cinemaChapterDots"></div>
+                    </div>
+                    <span class="cinema-time" id="cinemaTime">00:00</span>
+                    <button class="cinema-btn" id="cinemaFullscreen" title="Fullscreen">⛶</button>
+                    <button class="cinema-btn" id="cinemaClose" title="Close">✕</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Generate Section -->
+    <section id="generate" class="generate">
+        <div class="section-header">
+            <span class="section-tag">✨ AI Generator</span>
+            <h2 class="section-title">Create Your Character</h2>
+            <p class="section-desc">Choose an Indian historical figure and watch them transform into anime</p>
+        </div>
+
+        <div class="generator-container">
+            <div class="generator-form">
+                <div class="form-group">
+                    <label class="form-label">Select Historical Figure</label>
+                    <div class="character-select" id="characterSelect">
+                        <div class="select-option" data-value="maharana_pratap">
+                            <span class="option-icon">🗡️</span><span>Maharana Pratap</span>
+                        </div>
+                        <div class="select-option" data-value="rani_padmini">
+                            <span class="option-icon">👑</span><span>Rani Padmini</span>
+                        </div>
+                        <div class="select-option" data-value="tipu_sultan">
+                            <span class="option-icon">🐯</span><span>Tipu Sultan</span>
+                        </div>
+                        <div class="select-option" data-value="bhagat_singh">
+                            <span class="option-icon">🔥</span><span>Bhagat Singh</span>
+                        </div>
+                        <div class="select-option" data-value="rani_durgavati">
+                            <span class="option-icon">⚔️</span><span>Rani Durgavati</span>
+                        </div>
+                        <div class="select-option" data-value="subhas_bose">
+                            <span class="option-icon">🇮🇳</span><span>Subhas Chandra Bose</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Anime Style</label>
+                    <div class="style-select">
+                        <button class="style-btn active" data-style="shonen">Shōnen</button>
+                        <button class="style-btn" data-style="seinen">Seinen</button>
+                        <button class="style-btn" data-style="historical">Historical</button>
+                        <button class="style-btn" data-style="chibi">Chibi</button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Scene Setting</label>
+                    <div class="style-select">
+                        <button class="scene-btn active" data-scene="battlefield">⚔️ Battlefield</button>
+                        <button class="scene-btn" data-scene="throne">🏛️ Throne Room</button>
+                        <button class="scene-btn" data-scene="nature">🌿 Nature</button>
+                        <button class="scene-btn" data-scene="dramatic">🌅 Dramatic</button>
+                    </div>
+                </div>
+                <button class="btn btn-generate" id="generateBtn">
+                    <span class="btn-text">✨ Generate Anime Character</span>
+                    <span class="btn-loading" style="display:none;"><span class="spinner"></span>Generating...</span>
+                </button>
+            </div>
+            <div class="generator-preview" id="generatorPreview">
+                <div class="preview-placeholder">
+                    <div class="placeholder-icon">🎨</div>
+                    <p>Select a character and click Generate to see the magic!</p>
+                </div>
+                <div class="preview-result" style="display:none;">
+                    <img id="previewImg" src="" alt="">
+                    <div class="preview-info"><h3 id="previewName"></h3><p id="previewDesc"></p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="timeline-section">
+        <div class="section-header">
+            <span class="section-tag">📜 Timeline</span>
+            <h2 class="section-title">Journey Through Time</h2>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item" data-year="375 BCE"><div class="timeline-dot"></div><div class="timeline-content"><h4>Chanakya Born</h4><p>The master strategist who would shape an empire begins his journey at Takshashila</p></div></div>
+            <div class="timeline-item" data-year="340 BCE"><div class="timeline-dot"></div><div class="timeline-content"><h4>Chandragupta Rises</h4><p>Under Chanakya's guidance, the young warrior overthrows the Nanda dynasty</p></div></div>
+            <div class="timeline-item" data-year="304 BCE"><div class="timeline-dot"></div><div class="timeline-content"><h4>Ashoka Born</h4><p>The fierce warrior prince who would become India's greatest emperor of peace</p></div></div>
+            <div class="timeline-item" data-year="1166 CE"><div class="timeline-dot"></div><div class="timeline-content"><h4>Prithviraj Chauhan</h4><p>The legendary Rajput king, master archer, and defender of Ajmer rises to power</p></div></div>
+            <div class="timeline-item" data-year="1540 CE"><div class="timeline-dot"></div><div class="timeline-content"><h4>Maharana Pratap Born</h4><p>The pride of Mewar who never bowed before any invader, and his loyal horse Chetak</p></div></div>
+            <div class="timeline-item" data-year="1630 CE"><div class="timeline-dot"></div><div class="timeline-content"><h4>Shivaji Maharaj Born</h4><p>The founder of the Maratha Empire, master of guerrilla warfare, begins his legacy</p></div></div>
+            <div class="timeline-item" data-year="1828 CE"><div class="timeline-dot"></div><div class="timeline-content"><h4>Rani Lakshmibai Born</h4><p>The warrior queen who would ride into battle with her child strapped to her back</p></div></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="about-content">
+            <div class="about-text">
+                <span class="section-tag">🙏 About This Project</span>
+                <h2 class="section-title">Honouring Our Heritage</h2>
+                <p><strong>इतिहास Anime</strong> reimagines the greatest figures from Indian history as anime characters — with deep respect for historical accuracy. Every character is portrayed as the <strong>noble hero</strong> they were. Every detail, from Chanakya's shaved head and shikha to Shivaji Maharaj's Maratha pheta, has been carefully researched.</p>
+                <p>Our mission is to make Indian history exciting and accessible to a new generation, blending the visual appeal of anime with the richness of Bharatiya Itihaas.</p>
+                <div class="about-features">
+                    <div class="feature"><span class="feature-icon">🎯</span><div><h4>Historically Accurate</h4><p>Every character detail researched from historical sources</p></div></div>
+                    <div class="feature"><span class="feature-icon">🎬</span><div><h4>Cinematic Stories</h4><p>Watch animated anime videos of each character's history</p></div></div>
+                    <div class="feature"><span class="feature-icon">🙏</span><div><h4>Respectful Portrayal</h4><p>Every great personality shown with honour and dignity</p></div></div>
+                </div>
+            </div>
+            <div class="about-visual">
+                <div class="mosaic">
+                    <img src="images/chanakya.jpg" alt="" class="mosaic-img m1">
+                    <img src="images/shivaji_maharaj.jpg" alt="" class="mosaic-img m2">
+                    <img src="images/rani_lakshmibai.jpg" alt="" class="mosaic-img m3">
+                    <img src="images/maharana_pratap.jpg" alt="" class="mosaic-img m4">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span class="brand-icon">⚔️</span>
+                <span class="brand-text">इतिहास<span class="brand-sub">Anime</span></span>
+                <p>Bridging ancient glory with modern art</p>
+            </div>
+            <div class="footer-text">
+                <p>Made with ❤️ for Indian History</p>
+                <p class="footer-sub">All characters are AI-generated artistic interpretations portrayed with respect</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
