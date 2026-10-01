@@ -212,11 +212,11 @@ const videoStories = {
 // ===== Generator character placeholders =====
 const generatorCharacters = {
     maharana_pratap: { name: 'Maharana Pratap', desc: 'The legendary Rajput king of Mewar who never surrendered. Famous for the Battle of Haldighati and his loyal horse Chetak.', image: 'images/maharana_pratap.jpg' },
-    rani_padmini: { name: 'Rani Padmini', desc: 'The legendary queen of Chittor, known for her beauty and the supreme sacrifice of Jauhar to protect her honour.', image: 'images/rani_lakshmibai.jpg' },
-    tipu_sultan: { name: 'Tipu Sultan', desc: 'The Tiger of Mysore — pioneered rocket artillery against the British. A fierce and noble defender of his kingdom.', image: 'images/ashoka_the_great.jpg' },
-    bhagat_singh: { name: 'Bhagat Singh', desc: 'The revolutionary freedom fighter. His sacrifice at age 23 inspired millions to fight for India\'s independence.', image: 'images/chandragupta_maurya.jpg' },
-    rani_durgavati: { name: 'Rani Durgavati', desc: 'The brave warrior queen of Gondwana. She ruled with wisdom and chose death over surrender against the Mughals.', image: 'images/rani_lakshmibai.jpg' },
-    subhas_bose: { name: 'Subhas Chandra Bose', desc: 'Netaji — commander of the Indian National Army. "Give me blood and I shall give you freedom!" still echoes.', image: 'images/chandragupta_maurya.jpg' }
+    rani_padmini: { name: 'Rani Padmini', desc: 'The legendary queen of Chittor, known for her beauty and the supreme sacrifice of Jauhar to protect her honour.', image: 'images/rani_padmini.jpg' },
+    tipu_sultan: { name: 'Tipu Sultan', desc: 'The Tiger of Mysore — pioneered rocket artillery against the British. A noble and brave defender of his kingdom.', image: 'images/tipu_sultan.jpg' },
+    bhagat_singh: { name: 'Bhagat Singh', desc: 'The revolutionary freedom fighter. His sacrifice at age 23 inspired millions to fight for India\'s independence.', image: 'images/bhagat_singh.jpg' },
+    rani_durgavati: { name: 'Rani Durgavati', desc: 'The brave warrior queen of Gondwana. She ruled with wisdom and chose death over surrender against the Mughals.', image: 'images/rani_durgavati.jpg' },
+    subhas_bose: { name: 'Subhas Chandra Bose', desc: 'Netaji — commander of the Indian National Army. "Give me blood and I shall give you freedom!" still echoes.', image: 'images/subhas_chandra_bose.jpg' }
 };
 
 // ===== PARTICLES BACKGROUND =====
