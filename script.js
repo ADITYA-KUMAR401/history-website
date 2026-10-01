@@ -1,286 +1,716 @@
 // ===================================================================
-// इतिहास Anime — Full JavaScript (Gallery + Video Stories + Generator)
+// इतिहास Anime — Full Interactive Engine
+// Indian History × Anime: 12 Legendary Characters, Cinematic Video Player & Generator
 // ===================================================================
 
-// ===== CHARACTER DATA (Gallery) =====
-const characterData = {
-    chandragupta: {
-        name: 'Chandragupta Maurya', role: 'Founder of the Maurya Empire', era: '340–298 BCE',
+// ===== 1. COMPREHENSIVE CHARACTER DATABASE =====
+const allCharacters = [
+    {
+        id: 'chandragupta',
+        name: 'Chandragupta Maurya',
+        role: 'Founder of the Maurya Empire',
+        era: 'ancient',
+        eraText: '340–298 BCE',
         image: 'images/chandragupta_maurya.jpg',
-        bio: 'Chandragupta Maurya was the founder of the Maurya Empire. Starting as a young warrior from humble origins, he was mentored by the brilliant strategist Chanakya. Together they overthrew the powerful Nanda dynasty and defeated the Greek forces of Seleucus Nicator. He unified most of the Indian subcontinent under one rule for the first time.',
-        stats: [{ label: 'Dynasty', value: 'Maurya' }, { label: 'Capital', value: 'Pataliputra' }, { label: 'Known For', value: 'Unifying India' }, { label: 'Mentor', value: 'Chanakya' }],
-        quote: '"With the guidance of a wise teacher, even a common man can become an emperor."'
+        tags: ['Warrior', 'Emperor', 'Unifier'],
+        bio: 'Chandragupta Maurya founded the Maurya Empire, uniting most of the Indian subcontinent under a single sovereign rule for the first time in history. Mentored by Chanakya, he overthrew the corrupt Nanda dynasty and repelled the Greek forces of Seleucus Nicator.',
+        stats: [
+            { label: 'Dynasty', value: 'Maurya' },
+            { label: 'Capital', value: 'Pataliputra' },
+            { label: 'Major Feat', value: 'Unified Bharat' },
+            { label: 'Mentor', value: 'Chanakya' }
+        ],
+        quote: '"With guidance and righteous determination, even a humble youth can forge an immortal empire."',
+        videoTitle: 'The Rise of an Empire',
+        videoDuration: '⏱️ 2:30 min'
     },
-    chanakya: {
-        name: 'Chanakya (Kautilya)', role: 'The Master Strategist', era: '375–283 BCE',
+    {
+        id: 'chanakya',
+        name: 'Chanakya (Kautilya)',
+        role: 'The Master Strategist & Polymath',
+        era: 'ancient',
+        eraText: '375–283 BCE',
         image: 'images/chanakya.jpg',
-        bio: 'Chanakya, also known as Kautilya, was an ancient Indian polymath — teacher, philosopher, economist, and royal advisor. A Brahmin scholar at Takshashila with a shaved head and only a shikha, he authored the Arthashastra, a treatise on statecraft written 2,000 years before Machiavelli.',
-        stats: [{ label: 'Title', value: 'Kautilya / Vishnugupta' }, { label: 'University', value: 'Takshashila' }, { label: 'Masterwork', value: 'Arthashastra' }, { label: 'Legacy', value: 'Political Science Pioneer' }],
-        quote: '"Before you start some work, always ask yourself three questions — Why am I doing it? What might the results be? Will I be successful?"'
+        tags: ['Philosopher', 'Strategist', 'Guru'],
+        bio: 'Chanakya, also known as Vishnugupta and Kautilya, was an ancient Brahmin scholar and royal advisor at Takshashila University. Living with austere simplicity—shaved head and sacred shikha—he authored the pioneering Arthashastra on politics, economics, and military strategy.',
+        stats: [
+            { label: 'Institution', value: 'Takshashila' },
+            { label: 'Masterpiece', value: 'Arthashastra' },
+            { label: 'Apparel', value: 'Austere Monk Robe' },
+            { label: 'Legacy', value: 'Father of Statecraft' }
+        ],
+        quote: '"Before embarking on any endeavor, ask yourself: Why am I doing this? What will be the result? Will I succeed?"',
+        videoTitle: "The Mastermind's Sacred Oath",
+        videoDuration: '⏱️ 2:30 min'
     },
-    ashoka: {
-        name: 'Ashoka the Great', role: 'Emperor of Peace & Dharma', era: '304–232 BCE',
+    {
+        id: 'ashoka',
+        name: 'Ashoka the Great',
+        role: 'Emperor of Peace & Universal Dharma',
+        era: 'ancient',
+        eraText: '304–232 BCE',
         image: 'images/ashoka_the_great.jpg',
-        bio: 'Emperor Ashoka, grandson of Chandragupta, was transformed by the bloodshed at the Battle of Kalinga. He embraced Buddhism and devoted his life to peace and dharma. The Ashoka Chakra adorns the Indian flag to this day.',
-        stats: [{ label: 'Dynasty', value: 'Maurya' }, { label: 'Turning Point', value: 'Battle of Kalinga' }, { label: 'Religion', value: 'Buddhism' }, { label: 'Symbol', value: 'Ashoka Chakra 🇮🇳' }],
-        quote: '"All men are my children. What I desire for my own children — their welfare — I desire for all men."'
+        tags: ['Emperor', 'Buddhist', 'Dharma'],
+        bio: 'Grandson of Chandragupta, Emperor Ashoka ruled the vast Mauryan empire. Profoundly moved by the sorrow of the Kalinga War, he renounced violence, embraced Buddhism, and championed peace, animal welfare, and moral governance. The Ashoka Chakra shines upon the Indian National Flag today.',
+        stats: [
+            { label: 'Dynasty', value: 'Maurya' },
+            { label: 'Turning Point', value: 'Kalinga War (261 BCE)' },
+            { label: 'Ideology', value: 'Ahimsa & Dharma' },
+            { label: 'National Symbol', value: 'Ashoka Chakra 🇮🇳' }
+        ],
+        quote: '"All men are my children. Just as I desire prosperity for my own family, I desire welfare for all living beings."',
+        videoTitle: 'From Conquest to Compassion',
+        videoDuration: '⏱️ 3:00 min'
     },
-    prithviraj: {
-        name: 'Prithviraj Chauhan', role: 'The Last Great Rajput King', era: '1166–1192 CE',
+    {
+        id: 'prithviraj',
+        name: 'Prithviraj Chauhan',
+        role: 'The Last Great Rajput Sovereign',
+        era: 'medieval',
+        eraText: '1166–1192 CE',
         image: 'images/prithviraj_chauhan.jpg',
-        bio: 'Prithviraj III was the king of the Chahamana dynasty, renowned as a master archer. He famously defeated Muhammad of Ghor in the First Battle of Tarain. Legend says he killed Ghori with a blind arrow using shabdbhedi baan — shooting by sound.',
-        stats: [{ label: 'Dynasty', value: 'Chahamana (Chauhan)' }, { label: 'Capital', value: 'Ajmer & Delhi' }, { label: 'Famous Battle', value: 'Tarain (1191)' }, { label: 'Skill', value: 'Shabdbhedi Baan' }],
-        quote: '"A Rajput warrior fights with honour, not sight — even darkness cannot stop the arrow of justice."'
+        tags: ['Rajput', 'Master Archer', 'King'],
+        bio: 'Prithviraj III reigned over Ajmer and Delhi with extraordinary courage and chivalry. Renowned for mastering the legendary art of Shabdbhedi Baan (striking accurately by sound alone), he triumphed over invading armies at the First Battle of Tarain in 1191.',
+        stats: [
+            { label: 'Dynasty', value: 'Chahamana' },
+            { label: 'Capitals', value: 'Ajmer & Delhi' },
+            { label: 'Mastery', value: 'Shabdbhedi Baan' },
+            { label: 'Triumph', value: 'Battle of Tarain' }
+        ],
+        quote: '"A Rajput defends honour above life—the sound of truth guides the arrow through darkest night."',
+        videoTitle: 'The Unfailing Arrow of Justice',
+        videoDuration: '⏱️ 2:30 min'
     },
-    shivaji: {
-        name: 'Chhatrapati Shivaji Maharaj', role: 'Founder of the Maratha Empire', era: '1630–1680 CE',
-        image: 'images/shivaji_maharaj.jpg',
-        bio: 'Chhatrapati Shivaji Maharaj carved out a kingdom using brilliant guerrilla warfare. With his iconic Maratha turban and Bhavani sword, he established a competent civil administration, built a formidable navy, and promoted religious tolerance.',
-        stats: [{ label: 'Dynasty', value: 'Bhonsle (Maratha)' }, { label: 'Capital', value: 'Raigad Fort' }, { label: 'Sword', value: 'Bhavani Talwar' }, { label: 'Innovation', value: 'Indian Navy Pioneer' }],
-        quote: '"Even if there were a sword in the hands of everyone, it is willpower alone that establishes a kingdom."'
-    },
-    lakshmibai: {
-        name: 'Rani Lakshmibai', role: 'The Warrior Queen of Jhansi', era: '1828–1858 CE',
-        image: 'images/rani_lakshmibai.jpg',
-        bio: 'Rani Lakshmibai was one of the leading figures of the Indian Rebellion of 1857. She rode into battle with her young son strapped to her back. Even her British adversaries praised her as "the bravest and best military leader of the rebellion."',
-        stats: [{ label: 'Kingdom', value: 'Jhansi' }, { label: 'Rebellion', value: '1857 Revolt' }, { label: 'Horse', value: 'Badal & Sarangi' }, { label: 'Age at Death', value: '29 years' }],
-        quote: '"मैं अपनी झाँसी नहीं दूँगी!" — I shall not give up my Jhansi!'
-    },
-    maharana_pratap: {
-        name: 'Maharana Pratap', role: 'The Pride of Mewar', era: '1540–1597 CE',
+    {
+        id: 'maharana_pratap',
+        name: 'Maharana Pratap',
+        role: 'The Unconquered Lion of Mewar',
+        era: 'medieval',
+        eraText: '1540–1597 CE',
         image: 'images/maharana_pratap.jpg',
-        bio: 'Maharana Pratap was the Rajput king of Mewar who never surrendered to the Mughal Empire. The Battle of Haldighati (1576) became legendary. His loyal horse Chetak sacrificed its life to save its master — a bond celebrated for centuries.',
-        stats: [{ label: 'Dynasty', value: 'Sisodia (Rajput)' }, { label: 'Kingdom', value: 'Mewar' }, { label: 'Famous Battle', value: 'Haldighati (1576)' }, { label: 'Loyal Horse', value: 'Chetak' }],
-        quote: '"I may lose my kingdom, but I will never lose my honour. The sun of Mewar shall never set."'
+        tags: ['Rajput', 'Defender', 'Chetak'],
+        bio: 'Maharana Pratap was the beloved Rajput monarch of Mewar who fiercely stood for independence and honour. Leading his people in the legendary Battle of Haldighati (1576), he and his loyal warhorse Chetak embodied unbreakable spirit and chivalry.',
+        stats: [
+            { label: 'Dynasty', value: 'Sisodia (Mewar)' },
+            { label: 'Famous Stand', value: 'Haldighati (1576)' },
+            { label: 'Steed', value: 'Chetak' },
+            { label: 'Ideal', value: 'Unyielding Honour' }
+        ],
+        quote: '"The sun of Mewar shall never set before an invader. Honour and self-respect are our eternal crown."',
+        videoTitle: 'The Roar of Haldighati',
+        videoDuration: '⏱️ 2:45 min'
+    },
+    {
+        id: 'rani_padmini',
+        name: 'Rani Padmini (Padmavati)',
+        role: 'The Regal Queen of Chittor',
+        era: 'medieval',
+        eraText: '13th–14th Century CE',
+        image: 'images/rani_padmini.jpg',
+        tags: ['Queen', 'Chittorgarh', 'Sacrifice'],
+        bio: 'Rani Padmini was celebrated across Bharat for her radiant grace, intellect, and steadfast devotion to righteousness. When Chittorgarh faced overwhelming siege, she led the women of Chittor in supreme valor and dignity to safeguard their sanctity.',
+        stats: [
+            { label: 'Kingdom', value: 'Chittorgarh' },
+            { label: 'Reign', value: 'Guhila Dynasty' },
+            { label: 'Virtue', value: 'Supreme Sanctity' },
+            { label: 'Fortress', value: 'Chittor Fort' }
+        ],
+        quote: '"Dignity is the supreme adornment of a queen; it shines brighter than the grandest jewels of the palace."',
+        videoTitle: 'The Radiant Light of Chittor',
+        videoDuration: '⏱️ 2:30 min'
+    },
+    {
+        id: 'rani_durgavati',
+        name: 'Rani Durgavati',
+        role: 'Warrior Queen of Gondwana',
+        era: 'medieval',
+        eraText: '1524–1564 CE',
+        image: 'images/rani_durgavati.jpg',
+        tags: ['Gondwana', 'Leader', 'Warrior'],
+        bio: 'Rani Durgavati was the fearless ruler of Gondwana who transformed her kingdom into a bastion of prosperity, cultural harmony, and military prowess. Riding her majestic war elephant Sarman, she valiantly defended her homeland against imperial forces.',
+        stats: [
+            { label: 'Kingdom', value: 'Garha-Gondwana' },
+            { label: 'Seat', value: 'Singorgarh & Chauragarh' },
+            { label: 'Companion', value: 'Elephant Sarman' },
+            { label: 'Valor', value: 'Battle of Narrai' }
+        ],
+        quote: '"It is far nobler to die fighting with sword in hand than to yield one inch of the motherland."',
+        videoTitle: 'The Guardian of Gondwana',
+        videoDuration: '⏱️ 2:30 min'
+    },
+    {
+        id: 'shivaji',
+        name: 'Chhatrapati Shivaji Maharaj',
+        role: 'Founder of the Maratha Empire',
+        era: 'medieval',
+        eraText: '1630–1680 CE',
+        image: 'images/shivaji_maharaj.jpg',
+        tags: ['Maratha', 'Naval Pioneer', 'Sovereign'],
+        bio: 'Chhatrapati Shivaji Maharaj founded the Maratha Empire through visionary leadership, swift guerrilla warfare (Ganimi Kava), and just civil governance. He established modern naval defense, protected all religions, and revived native administration under Hindavi Swarajya.',
+        stats: [
+            { label: 'Empire', value: 'Maratha' },
+            { label: 'Capital', value: 'Raigad Fort' },
+            { label: 'Sword', value: 'Bhavani Talwar' },
+            { label: 'Vision', value: 'Hindavi Swarajya' }
+        ],
+        quote: '"Even if there were a sword in the hands of everyone, it is unshakeable willpower alone that establishes a kingdom."',
+        videoTitle: 'The Flame of Swarajya',
+        videoDuration: '⏱️ 3:00 min'
+    },
+    {
+        id: 'tipu_sultan',
+        name: 'Tipu Sultan',
+        role: 'The Tiger of Mysore & Artillery Pioneer',
+        era: 'medieval',
+        eraText: '1751–1799 CE',
+        image: 'images/tipu_sultan.jpg',
+        tags: ['Mysore', 'Rocket Pioneer', 'Defender'],
+        bio: 'Tipu Sultan ruled Mysore as a scholarly innovator and military commander. Renowned for advancing iron-cased Mysorean rockets against colonial armies, he fortified Srirangapatna and resisted foreign expansionism with relentless determination.',
+        stats: [
+            { label: 'Kingdom', value: 'Mysore' },
+            { label: 'Capital', value: 'Srirangapatna' },
+            { label: 'Innovation', value: 'Mysorean Rocket Artillery' },
+            { label: 'Emblem', value: 'Tiger of Mysore' }
+        ],
+        quote: '"To live like a tiger for a single day is far greater than to live like a sheep for a hundred years."',
+        videoTitle: 'The Roar of Mysore',
+        videoDuration: '⏱️ 2:30 min'
+    },
+    {
+        id: 'lakshmibai',
+        name: 'Rani Lakshmibai',
+        role: 'The Warrior Queen of Jhansi',
+        era: 'modern',
+        eraText: '1828–1858 CE',
+        image: 'images/rani_lakshmibai.jpg',
+        tags: ['Freedom', '1857 Revolt', 'Warrior'],
+        bio: 'Rani Lakshmibai was one of the foremost leaders of the 1857 First War of Indian Independence. Defending Jhansi with her son Damodar Rao strapped to her back, her extraordinary courage drew unanimous respect from allies and foes alike.',
+        stats: [
+            { label: 'Kingdom', value: 'Jhansi' },
+            { label: 'Uprising', value: '1857 War of Independence' },
+            { label: 'Steeds', value: 'Badal, Pavan, Sarangi' },
+            { label: 'Age of Valor', value: '29 Years' }
+        ],
+        quote: '"मैं अपनी झाँसी नहीं दूँगी! (I shall never surrender my Jhansi!)"',
+        videoTitle: 'The Lightning of Jhansi',
+        videoDuration: '⏱️ 2:45 min'
+    },
+    {
+        id: 'bhagat_singh',
+        name: 'Bhagat Singh',
+        role: 'The Revolutionary Symbol of Freedom',
+        era: 'modern',
+        eraText: '1907–1931 CE',
+        image: 'images/bhagat_singh.jpg',
+        tags: ['Revolutionary', 'Patriot', 'Inquilab'],
+        bio: 'Bhagat Singh was a passionate intellectual, writer, and freedom fighter whose supreme sacrifice at the age of 23 ignited India’s struggle for complete independence. His slogan "Inquilab Zindabad" resonated across the hearts of millions.',
+        stats: [
+            { label: 'Movement', value: 'HSRA' },
+            { label: 'Iconic Call', value: 'Inquilab Zindabad!' },
+            { label: 'Age at Sacrifice', value: '23 Years' },
+            { label: 'Legacy', value: 'Shaheed-e-Azam' }
+        ],
+        quote: '"They may kill me, but they cannot kill my ideas. They can crush my body, but they cannot crush my spirit."',
+        videoTitle: 'The Eternal Spark of Inquilab',
+        videoDuration: '⏱️ 2:30 min'
+    },
+    {
+        id: 'subhas_bose',
+        name: 'Subhas Chandra Bose (Netaji)',
+        role: 'Supreme Commander of the Indian National Army',
+        era: 'modern',
+        eraText: '1897–1945 CE',
+        image: 'images/subhas_chandra_bose.jpg',
+        tags: ['Netaji', 'INA', 'Jai Hind'],
+        bio: 'Netaji Subhas Chandra Bose was the charismatic leader who formed the Azad Hind Fauj (Indian National Army) to liberate India by storm. His rallying cries "Jai Hind" and "Give me blood, and I will give you freedom!" inspired millions to rise for self-determination.',
+        stats: [
+            { label: 'Army', value: 'Azad Hind Fauj (INA)' },
+            { label: 'Greeting', value: 'Jai Hind! 🇮🇳' },
+            { label: 'Government', value: 'Provisional Govt of Azad Hind' },
+            { label: 'Title', value: 'Netaji' }
+        ],
+        quote: '"Freedom is not given, it is taken. Give me blood, and I promise you freedom!"',
+        videoTitle: 'The March of Azad Hind',
+        videoDuration: '⏱️ 2:45 min'
     }
-};
+];
 
-// ===== ANIME VIDEO STORY SCRIPTS =====
-// Each story has chapters with scene direction
-const videoStories = {
+// ===== 2. CINEMATIC VIDEO SCRIPTS =====
+const videoStoryScripts = {
     chandragupta: {
         title: 'Chandragupta Maurya',
         subtitle: 'The Rise of an Empire',
         image: 'images/chandragupta_maurya.jpg',
         chapters: [
-            { type: 'title', duration: 5000 },
+            { type: 'title', duration: 4500 },
             { type: 'chapter', label: 'Chapter I', title: 'The Orphan of Pataliputra', duration: 3000 },
-            { type: 'narration', text: 'In the ancient city of Pataliputra, under the tyrannical rule of the Nanda dynasty, a young boy with fire in his eyes dreamed of a united Bharat...', duration: 7000 },
-            { type: 'character', duration: 6000 },
-            { type: 'narration', text: 'Abandoned and alone, the boy showed extraordinary courage and leadership even as a child. A passing scholar noticed something remarkable in him — the spark of a future emperor.', duration: 8000 },
-            { type: 'chapter', label: 'Chapter II', title: 'The Meeting with Chanakya', duration: 3000 },
-            { type: 'narration', text: 'At the great university of Takshashila, the brilliant Brahmin teacher Chanakya — humiliated by the Nanda king — took a sacred oath. He would uproot the corrupt dynasty and place a worthy king on the throne.', duration: 9000 },
-            { type: 'narration', text: 'When Chanakya saw young Chandragupta commanding other boys in play, he knew — this was the one. The teacher found his emperor. The sword found its strategist.', duration: 8000 },
-            { type: 'chapter', label: 'Chapter III', title: 'The Fall of the Nandas', duration: 3000 },
-            { type: 'narration', text: 'Years of rigorous training in warfare, diplomacy, and statecraft transformed the orphan into an unstoppable warrior. With Chanakya\'s masterful strategy, they built an army from nothing.', duration: 8000 },
-            { type: 'character', duration: 5000 },
-            { type: 'narration', text: 'In a campaign that shook the subcontinent, Chandragupta defeated the mighty Nanda army, conquered Pataliputra, and at the age of just 20, became the Emperor of the greatest empire India had ever seen.', duration: 9000 },
-            { type: 'chapter', label: 'Chapter IV', title: 'The Maurya Empire', duration: 3000 },
-            { type: 'narration', text: 'He defeated the Greek generals left behind by Alexander. He made the mighty Seleucus Nicator bow and offer his daughter in peace. From Afghanistan to Bengal — one empire, one Bharat, one Chandragupta.', duration: 9000 },
+            { type: 'narration', text: 'In the ancient city of Pataliputra, amidst turmoil and foreign incursions, a young boy with luminous eyes envisioned an undivided Bharat.', duration: 7500 },
+            { type: 'character', duration: 5500 },
+            { type: 'chapter', label: 'Chapter II', title: 'The Mentor of Takshashila', duration: 3000 },
+            { type: 'narration', text: 'The master teacher Chanakya witnessed the boy organizing other children into disciplined units. The teacher found his emperor; the sword found its mastermind.', duration: 8000 },
+            { type: 'chapter', label: 'Chapter III', title: 'Unification of Bharat', duration: 3000 },
+            { type: 'narration', text: 'Trained rigorously in statecraft and strategy, Chandragupta united sovereign provinces, defeated Seleucus Nicator, and founded the Maurya Empire—stretching from the Himalayas to the oceans.', duration: 9000 },
             { type: 'quote', duration: 6000 },
             { type: 'credit', duration: 4000 }
         ]
     },
     chanakya: {
-        title: 'Chanakya',
-        subtitle: 'The Mastermind\'s Oath',
+        title: 'Chanakya (Kautilya)',
+        subtitle: "The Mastermind's Sacred Oath",
         image: 'images/chanakya.jpg',
         chapters: [
-            { type: 'title', duration: 5000 },
-            { type: 'chapter', label: 'Chapter I', title: 'The Scholar of Takshashila', duration: 3000 },
-            { type: 'narration', text: 'In the ancient halls of Takshashila — the world\'s first university — a brilliant Brahmin scholar with a shaved head and a single shikha spent his days mastering every known science.', duration: 8000 },
-            { type: 'character', duration: 6000 },
-            { type: 'narration', text: 'Chanakya was no ordinary teacher. He was a master of economics, warfare, politics, and human psychology. His mind was sharper than any sword ever forged.', duration: 7000 },
-            { type: 'chapter', label: 'Chapter II', title: 'The Oath of Vengeance', duration: 3000 },
-            { type: 'narration', text: 'When the arrogant Nanda king Dhanananda insulted and humiliated him in open court, Chanakya untied his sacred shikha and took a thunderous oath — "I will not tie my shikha until I uproot this dynasty!"', duration: 9000 },
-            { type: 'narration', text: 'This was not the rage of a warrior. This was the cold, calculated fury of the most dangerous mind in all of India. The Nanda king had made his greatest mistake.', duration: 8000 },
+            { type: 'title', duration: 4500 },
+            { type: 'chapter', label: 'Chapter I', title: 'The Sage of Takshashila', duration: 3000 },
+            { type: 'narration', text: 'In the great university of Takshashila, an austere scholar with a shaved head and sacred shikha mastered economics, warfare, and moral governance.', duration: 7500 },
+            { type: 'character', duration: 5500 },
+            { type: 'chapter', label: 'Chapter II', title: 'The Sacred Vow', duration: 3000 },
+            { type: 'narration', text: 'Insulted by corrupt rulers, Chanakya untied his shikha and proclaimed: "I shall not bind this hair until righteousness and strength are restored to the throne of Bharat!"', duration: 8500 },
             { type: 'chapter', label: 'Chapter III', title: 'The Arthashastra', duration: 3000 },
-            { type: 'narration', text: 'Chanakya wrote the Arthashastra — a masterwork on statecraft, espionage, economics, and governance that would influence rulers for millennia. It was written 1,800 years before Machiavelli\'s The Prince.', duration: 9000 },
-            { type: 'character', duration: 5000 },
-            { type: 'narration', text: 'With his pen, he designed an empire. With his strategy, he built it. And with his student Chandragupta, he delivered on every word of his oath.', duration: 8000 },
+            { type: 'narration', text: 'He composed the timeless Arthashastra, guiding generations on ethics, administration, and sovereignty. His intellect remains an eternal beacon of Bharatiya wisdom.', duration: 8500 },
             { type: 'quote', duration: 6000 },
             { type: 'credit', duration: 4000 }
         ]
     },
     ashoka: {
         title: 'Ashoka the Great',
-        subtitle: 'From Warrior to Saint',
+        subtitle: 'From Conquest to Compassion',
         image: 'images/ashoka_the_great.jpg',
         chapters: [
-            { type: 'title', duration: 5000 },
-            { type: 'chapter', label: 'Chapter I', title: 'The Fierce Prince', duration: 3000 },
-            { type: 'narration', text: 'Born as the grandson of the great Chandragupta Maurya, young Ashoka was fierce, ambitious, and ruthless. He crushed every rebellion and conquered every territory that stood against the Maurya Empire.', duration: 9000 },
-            { type: 'character', duration: 6000 },
-            { type: 'narration', text: 'They called him "Chandashoka" — Ashoka the Cruel. His military campaigns knew no mercy. The throne of Pataliputra was his, seized through sheer force and political cunning.', duration: 8000 },
-            { type: 'chapter', label: 'Chapter II', title: 'The Battle of Kalinga', duration: 3000 },
-            { type: 'narration', text: 'In 261 BCE, Ashoka launched his greatest campaign — the invasion of Kalinga. The battle was devastating. Over 100,000 soldiers died. 150,000 were deported. The rivers ran red with blood.', duration: 9000 },
-            { type: 'narration', text: 'Walking through the battlefield after his "victory," Ashoka saw the carnage — the bodies of mothers, children, innocents. Something broke inside the emperor. Something new was born.', duration: 9000 },
-            { type: 'chapter', label: 'Chapter III', title: 'The Transformation', duration: 3000 },
-            { type: 'narration', text: 'Ashoka renounced violence forever. He embraced Buddhism and the path of Dharma. The most powerful emperor in the world chose peace over power, compassion over conquest.', duration: 8000 },
-            { type: 'character', duration: 5000 },
-            { type: 'narration', text: 'He erected the Ashoka Pillars across India — each bearing the lion capital that would become independent India\'s national emblem. The Ashoka Chakra adorns the Indian flag to this very day.', duration: 9000 },
+            { type: 'title', duration: 4500 },
+            { type: 'chapter', label: 'Chapter I', title: 'The Mighty Emperor', duration: 3000 },
+            { type: 'narration', text: 'Inheriting the vast Mauryan realm, Ashoka ruled with unmatched strength and military power across the subcontinent.', duration: 7000 },
+            { type: 'character', duration: 5500 },
+            { type: 'chapter', label: 'Chapter II', title: 'The Awakening at Kalinga', duration: 3000 },
+            { type: 'narration', text: 'Witnessing the tragedy of Kalinga, his heart transformed. He laid down weapons of war and embraced the path of Ahimsa, peace, and universal dharma.', duration: 8500 },
+            { type: 'chapter', label: 'Chapter III', title: 'The Wheel of Dharma', duration: 3000 },
+            { type: 'narration', text: 'He inscribed edicts of benevolence across pillars and rocks. The 24 spokes of the Ashoka Chakra live on as our national emblem of righteousness and progress.', duration: 9000 },
             { type: 'quote', duration: 6000 },
             { type: 'credit', duration: 4000 }
         ]
     },
     prithviraj: {
         title: 'Prithviraj Chauhan',
-        subtitle: 'The Arrow of Justice',
+        subtitle: 'The Unfailing Arrow of Justice',
         image: 'images/prithviraj_chauhan.jpg',
         chapters: [
-            { type: 'title', duration: 5000 },
-            { type: 'chapter', label: 'Chapter I', title: 'The Young King of Ajmer', duration: 3000 },
-            { type: 'narration', text: 'At the age of just 11, Prithviraj Chauhan ascended the throne of the mighty Chahamana dynasty. Young in years but ancient in courage, he was a born warrior and a legendary archer.', duration: 8000 },
-            { type: 'character', duration: 6000 },
-            { type: 'narration', text: 'His skill with the bow was beyond human. He could hit a target purely by sound — the legendary art of Shabdbhedi Baan. They said his arrows never missed, for they carried the honour of a Rajput.', duration: 8000 },
-            { type: 'chapter', label: 'Chapter II', title: 'The First Battle of Tarain', duration: 3000 },
-            { type: 'narration', text: 'When Muhammad of Ghor invaded with a massive army, Prithviraj met him on the plains of Tarain in 1191. In a glorious display of Rajput valour, he crushed the invader and drove him back in defeat.', duration: 9000 },
-            { type: 'narration', text: 'True to Rajput honour, Prithviraj showed mercy and released his defeated enemy — a decision that would define the fate of Bharat forever.', duration: 7000 },
-            { type: 'chapter', label: 'Chapter III', title: 'The Final Arrow', duration: 3000 },
-            { type: 'narration', text: 'Captured after the Second Battle of Tarain, Prithviraj was blinded but his spirit remained unbroken. Legend says that in Ghor\'s court, his loyal poet Chand Bardai whispered the location of the enemy king in verse.', duration: 9000 },
-            { type: 'character', duration: 5000 },
-            { type: 'narration', text: '"Chaar baas, chaubis gaj, angul ashta pramaan... Taa upar sultan hai, mat chuko Chauhan!" — And with a single arrow guided by sound alone, the blind king struck true. A legend for eternity.', duration: 10000 },
-            { type: 'quote', duration: 6000 },
-            { type: 'credit', duration: 4000 }
-        ]
-    },
-    shivaji: {
-        title: 'Chhatrapati Shivaji Maharaj',
-        subtitle: 'The Tiger of Maharashtra',
-        image: 'images/shivaji_maharaj.jpg',
-        chapters: [
-            { type: 'title', duration: 5000 },
-            { type: 'chapter', label: 'Chapter I', title: 'The Son of the Sahyadris', duration: 3000 },
-            { type: 'narration', text: 'In the rugged Sahyadri mountains of Maharashtra, a young boy named Shivaji grew up listening to tales of valour from his mother Jijabai. She ignited in him a fire that would liberate an entire nation.', duration: 8000 },
-            { type: 'character', duration: 6000 },
-            { type: 'narration', text: 'At the age of just 16, Shivaji captured the fortress of Torna. It was the first spark of what would become an unstoppable wildfire — the rise of the Maratha Empire.', duration: 8000 },
-            { type: 'chapter', label: 'Chapter II', title: 'The Art of Guerrilla War', duration: 3000 },
-            { type: 'narration', text: 'Shivaji revolutionized warfare. While great empires relied on massive armies, he used the mountains themselves as his army — striking fast, disappearing into the hills, outsmarting forces ten times his size.', duration: 9000 },
-            { type: 'narration', text: 'He built a network of hill forts across the Sahyadris. He created India\'s first navy. He treated every faith with respect. He was not just a warrior — he was a visionary king.', duration: 8000 },
-            { type: 'chapter', label: 'Chapter III', title: 'The Coronation', duration: 3000 },
-            { type: 'narration', text: 'On June 6, 1674, atop the mighty Raigad Fort, Shivaji was crowned Chhatrapati — the sovereign king. Saffron flags flew over the Sahyadris. The Maratha Empire was born. Bharat had its protector.', duration: 9000 },
-            { type: 'character', duration: 5000 },
-            { type: 'narration', text: 'His legacy endures — a king who proved that courage, strategy, and righteousness can overcome any force. Jai Bhavani! Jai Shivaji!', duration: 7000 },
-            { type: 'quote', duration: 6000 },
-            { type: 'credit', duration: 4000 }
-        ]
-    },
-    lakshmibai: {
-        title: 'Rani Lakshmibai',
-        subtitle: 'The Queen Who Fought',
-        image: 'images/rani_lakshmibai.jpg',
-        chapters: [
-            { type: 'title', duration: 5000 },
-            { type: 'chapter', label: 'Chapter I', title: 'Manikarnika', duration: 3000 },
-            { type: 'narration', text: 'Born as Manikarnika in Varanasi, the young girl grew up learning horse riding, sword fighting, and archery — alongside her education. She was no ordinary girl. She was destiny\'s chosen warrior.', duration: 8000 },
-            { type: 'character', duration: 6000 },
-            { type: 'narration', text: 'Married to Maharaja Gangadhar Rao of Jhansi, she became Rani Lakshmibai — the queen of a small but proud kingdom. When her husband died and the British tried to annex Jhansi, she stood firm.', duration: 8000 },
-            { type: 'chapter', label: 'Chapter II', title: '"मैं अपनी झाँसी नहीं दूँगी!"', duration: 4000 },
-            { type: 'narration', text: '"I shall not give up my Jhansi!" — These words thundered across India. A young queen, standing alone against the might of the British Empire, refusing to surrender what was rightfully hers.', duration: 8000 },
-            { type: 'narration', text: 'When the British armies laid siege to Jhansi, she defended her city with extraordinary bravery. When the walls fell, she did the unthinkable — she leapt from the fort on horseback, her infant son strapped to her back.', duration: 9000 },
-            { type: 'chapter', label: 'Chapter III', title: 'The Last Ride', duration: 3000 },
-            { type: 'narration', text: 'Dressed as a man, sword in hand, baby on her back, Rani Lakshmibai rode through enemy lines like a force of nature. Even the British general Hugh Rose admitted she was "the bravest and best of the military leaders."', duration: 9000 },
-            { type: 'character', duration: 5000 },
-            { type: 'narration', text: 'She fell in battle at just 29 years of age. But her sacrifice lit the flame of India\'s freedom struggle. She proved that courage knows no gender. Rani Lakshmibai — the eternal symbol of resistance.', duration: 9000 },
+            { type: 'title', duration: 4500 },
+            { type: 'chapter', label: 'Chapter I', title: 'The Young Defender', duration: 3000 },
+            { type: 'narration', text: 'Ascending the throne of Ajmer and Delhi, Prithviraj Chauhan exemplified chivalry and master archer skills across northern India.', duration: 7500 },
+            { type: 'character', duration: 5500 },
+            { type: 'chapter', label: 'Chapter II', title: 'The Battle of Tarain', duration: 3000 },
+            { type: 'narration', text: 'At Tarain in 1191, he routed foreign invaders with relentless courage, demonstrating Rajput honor and martial distinction.', duration: 8000 },
+            { type: 'chapter', label: 'Chapter III', title: 'Shabdbhedi Baan', duration: 3000 },
+            { type: 'narration', text: '"Chaar baas, chaubis gaj, angul ashta pramaan..." Guided purely by sound, the blindfolded king struck the mark with immortal precision.', duration: 9000 },
             { type: 'quote', duration: 6000 },
             { type: 'credit', duration: 4000 }
         ]
     },
     maharana_pratap: {
         title: 'Maharana Pratap',
-        subtitle: 'The Unconquered King',
+        subtitle: 'The Roar of Haldighati',
         image: 'images/maharana_pratap.jpg',
         chapters: [
-            { type: 'title', duration: 5000 },
-            { type: 'chapter', label: 'Chapter I', title: 'The Lion of Mewar', duration: 3000 },
-            { type: 'narration', text: 'In the royal house of Mewar, the noble Sisodia Rajput dynasty, a prince was born whose name would become synonymous with freedom, honour, and unyielding courage — Maharana Pratap.', duration: 8000 },
-            { type: 'character', duration: 6000 },
-            { type: 'narration', text: 'When most Rajput kings submitted to Mughal authority, Pratap stood tall and refused. He would eat grass and live in the forests, but he would never bow before any invader. That was his sacred oath.', duration: 9000 },
-            { type: 'chapter', label: 'Chapter II', title: 'The Battle of Haldighati', duration: 3000 },
-            { type: 'narration', text: 'On June 18, 1576, the narrow pass of Haldighati witnessed one of history\'s most heroic battles. Maharana Pratap, with a small force, charged against the massive Mughal army led by Man Singh.', duration: 9000 },
-            { type: 'narration', text: 'Riding his beloved horse Chetak, Pratap fought with the fury of a lion. Though outnumbered, the Rajputs fought with such valour that even the Mughal chroniclers recorded their bravery with respect.', duration: 8000 },
-            { type: 'chapter', label: 'Chapter III', title: 'Chetak — The Loyal Companion', duration: 3000 },
-            { type: 'narration', text: 'When Pratap was wounded and the battle turned, his loyal horse Chetak — though fatally injured — carried his master to safety, leaping across a wide stream before collapsing. Pratap wept over his fallen companion.', duration: 9000 },
-            { type: 'character', duration: 5000 },
-            { type: 'narration', text: 'Maharana Pratap never surrendered. He recaptured most of Mewar and ruled with honour until his last breath. The sun of Mewar never set. His courage echoes through the centuries — a true hero of Bharat.', duration: 9000 },
+            { type: 'title', duration: 4500 },
+            { type: 'chapter', label: 'Chapter I', title: 'The Pride of Mewar', duration: 3000 },
+            { type: 'narration', text: 'In the sacred land of Mewar, Maharana Pratap refused to bow before imperial subjugation, choosing the freedom of his mountains and people.', duration: 8000 },
+            { type: 'character', duration: 5500 },
+            { type: 'chapter', label: 'Chapter II', title: 'Haldighati & Chetak', duration: 3000 },
+            { type: 'narration', text: 'On June 18, 1576, Pratap charged into battle on his beloved horse Chetak. Bound by deep loyalty, Chetak carried his wounded master to safety with a heroic final leap.', duration: 9000 },
+            { type: 'chapter', label: 'Chapter III', title: 'The Eternal Flame', duration: 3000 },
+            { type: 'narration', text: 'Living in the Aravallis, he recaptured his lands and preserved the sovereignty of Mewar. His noble courage shines as an eternal inspiration.', duration: 8500 },
+            { type: 'quote', duration: 6000 },
+            { type: 'credit', duration: 4000 }
+        ]
+    },
+    rani_padmini: {
+        title: 'Rani Padmini',
+        subtitle: 'The Radiant Light of Chittor',
+        image: 'images/rani_padmini.jpg',
+        chapters: [
+            { type: 'title', duration: 4500 },
+            { type: 'chapter', label: 'Chapter I', title: 'The Jewel of Chittorgarh', duration: 3000 },
+            { type: 'narration', text: 'Rani Padmini graced the historic fort of Chittor with wisdom, poetic grace, and serene royal dignity.', duration: 7500 },
+            { type: 'character', duration: 5500 },
+            { type: 'chapter', label: 'Chapter II', title: 'The Test of Valor', duration: 3000 },
+            { type: 'narration', text: 'When greedy conquerors besieged the fortress, Padmini inspired the women and warriors of Mewar with unshakeable fortitude.', duration: 8000 },
+            { type: 'chapter', label: 'Chapter III', title: 'Immortal Dignity', duration: 3000 },
+            { type: 'narration', text: 'Choosing noble sacrifice over subjugation, her legend stands eternally as a testament to purity, pride, and Bharatiya self-respect.', duration: 8500 },
+            { type: 'quote', duration: 6000 },
+            { type: 'credit', duration: 4000 }
+        ]
+    },
+    rani_durgavati: {
+        title: 'Rani Durgavati',
+        subtitle: 'The Guardian of Gondwana',
+        image: 'images/rani_durgavati.jpg',
+        chapters: [
+            { type: 'title', duration: 4500 },
+            { type: 'chapter', label: 'Chapter I', title: 'The Queen of the Forests', duration: 3000 },
+            { type: 'narration', text: 'Ruler of Gondwana, Rani Durgavati nurtured a prosperous land with extensive irrigation, temples, and an invincible defense force.', duration: 8000 },
+            { type: 'character', duration: 5500 },
+            { type: 'chapter', label: 'Chapter II', title: 'The Battle on Elephant Sarman', duration: 3000 },
+            { type: 'narration', text: 'Riding into the thick of combat upon her royal elephant Sarman, she drove back invading imperial armies with fearless archery.', duration: 8500 },
+            { type: 'chapter', label: 'Chapter III', title: 'Sovereign till the End', duration: 3000 },
+            { type: 'narration', text: 'Fighting to her final breath, she preserved the sacred liberty of Gondwana. Her memory lives on in the songs of central India.', duration: 8500 },
+            { type: 'quote', duration: 6000 },
+            { type: 'credit', duration: 4000 }
+        ]
+    },
+    shivaji: {
+        title: 'Chhatrapati Shivaji Maharaj',
+        subtitle: 'The Flame of Swarajya',
+        image: 'images/shivaji_maharaj.jpg',
+        chapters: [
+            { type: 'title', duration: 4500 },
+            { type: 'chapter', label: 'Chapter I', title: 'The Sahyadri Lion', duration: 3000 },
+            { type: 'narration', text: 'Inspired by his noble mother Jijabai, young Shivaji vowed to establish Hindavi Swarajya—a self-governing homeland of justice and honor.', duration: 8000 },
+            { type: 'character', duration: 5500 },
+            { type: 'chapter', label: 'Chapter II', title: 'Forts & Naval Mastery', duration: 3000 },
+            { type: 'narration', text: 'Through revolutionary mountain tactics and building India’s first modern blue-water naval fleet, he secured the coastlines and hill citadels.', duration: 8500 },
+            { type: 'chapter', label: 'Chapter III', title: 'The Coronation at Raigad', duration: 3000 },
+            { type: 'narration', text: 'Crowned Chhatrapati in 1674, he established equitable administration, religious respect, and naval strength that shaped modern India.', duration: 9000 },
+            { type: 'quote', duration: 6000 },
+            { type: 'credit', duration: 4000 }
+        ]
+    },
+    tipu_sultan: {
+        title: 'Tipu Sultan',
+        subtitle: 'The Roar of Mysore',
+        image: 'images/tipu_sultan.jpg',
+        chapters: [
+            { type: 'title', duration: 4500 },
+            { type: 'chapter', label: 'Chapter I', title: 'The Innovator of Srirangapatna', duration: 3000 },
+            { type: 'narration', text: 'In southern India, Tipu Sultan blended scientific curiosity, silk commerce, and military engineering to defend Mysore.', duration: 7500 },
+            { type: 'character', duration: 5500 },
+            { type: 'chapter', label: 'Chapter II', title: 'Mysorean Rocket Artillery', duration: 3000 },
+            { type: 'narration', text: 'Pioneering metal-cylinder rockets with devastating accuracy, his forces repulsed colonial advances across multiple campaigns.', duration: 8000 },
+            { type: 'chapter', label: 'Chapter III', title: 'Valiant Stand', duration: 3000 },
+            { type: 'narration', text: 'Sword in hand with the tiger emblem gleaming, he stood with his troops at the gates of Srirangapatna, refusing dishonor.', duration: 8500 },
+            { type: 'quote', duration: 6000 },
+            { type: 'credit', duration: 4000 }
+        ]
+    },
+    lakshmibai: {
+        title: 'Rani Lakshmibai',
+        subtitle: 'The Lightning of Jhansi',
+        image: 'images/rani_lakshmibai.jpg',
+        chapters: [
+            { type: 'title', duration: 4500 },
+            { type: 'chapter', label: 'Chapter I', title: 'Manikarnika of Varanasi', duration: 3000 },
+            { type: 'narration', text: 'Mastering swordsmanship, equestrian arts, and sacred scriptures from childhood, young Manu became the beloved queen of Jhansi.', duration: 7500 },
+            { type: 'character', duration: 5500 },
+            { type: 'chapter', label: 'Chapter II', title: 'The Cry of Freedom', duration: 3000 },
+            { type: 'narration', text: '"मैं अपनी झाँसी नहीं दूँगी!" She rallied warriors of every background, leaping from the high ramparts on her horse Badal with her infant son safely secured.', duration: 9000 },
+            { type: 'chapter', label: 'Chapter III', title: 'Immortal Legend', duration: 3000 },
+            { type: 'narration', text: 'At just 29 years old, she led cavalry charges that shook the empire. Even her adversaries proclaimed her the bravest and noblest commander.', duration: 9000 },
+            { type: 'quote', duration: 6000 },
+            { type: 'credit', duration: 4000 }
+        ]
+    },
+    bhagat_singh: {
+        title: 'Bhagat Singh',
+        subtitle: 'The Eternal Spark of Inquilab',
+        image: 'images/bhagat_singh.jpg',
+        chapters: [
+            { type: 'title', duration: 4500 },
+            { type: 'chapter', label: 'Chapter I', title: 'The Youth of Punjab', duration: 3000 },
+            { type: 'narration', text: 'Witnessing colonial oppression, a brilliant 23-year-old visionary embraced the pen, the press, and the revolution.', duration: 7500 },
+            { type: 'character', duration: 5500 },
+            { type: 'chapter', label: 'Chapter II', title: 'To Make the Deaf Hear', duration: 3000 },
+            { type: 'narration', text: 'Throwing harmless pamphlets and slogans in the Assembly, he declared that bullets cannot kill ideals and ideas shall liberate humanity.', duration: 8500 },
+            { type: 'chapter', label: 'Chapter III', title: 'Inquilab Zindabad!', duration: 3000 },
+            { type: 'narration', text: 'Smiling in the face of the gallows, his supreme sacrifice awakened the slumbering conscience of a billion citizens.', duration: 8500 },
+            { type: 'quote', duration: 6000 },
+            { type: 'credit', duration: 4000 }
+        ]
+    },
+    subhas_bose: {
+        title: 'Subhas Chandra Bose (Netaji)',
+        subtitle: 'The March of Azad Hind',
+        image: 'images/subhas_chandra_bose.jpg',
+        chapters: [
+            { type: 'title', duration: 4500 },
+            { type: 'chapter', label: 'Chapter I', title: 'The Visionary Leader', duration: 3000 },
+            { type: 'narration', text: 'A brilliant leader and patriot, Subhas Chandra Bose dedicated every breath to the complete liberation of mother Bharat.', duration: 7500 },
+            { type: 'character', duration: 5500 },
+            { type: 'chapter', label: 'Chapter II', title: 'The Azad Hind Fauj', duration: 3000 },
+            { type: 'narration', text: 'Uniting expatriate Indians across Asia, he formed the Indian National Army with the inclusive Rani of Jhansi women’s combat regiment.', duration: 8500 },
+            { type: 'chapter', label: 'Chapter III', title: 'Chalo Delhi! Jai Hind!', duration: 3000 },
+            { type: 'narration', text: '"Give me blood, and I promise you freedom!" His roar echoes through time, forever enshrined in our national greeting: Jai Hind!', duration: 9000 },
             { type: 'quote', duration: 6000 },
             { type: 'credit', duration: 4000 }
         ]
     }
 };
 
-// ===== Generator character placeholders =====
-const generatorCharacters = {
-    maharana_pratap: { name: 'Maharana Pratap', desc: 'The legendary Rajput king of Mewar who never surrendered. Famous for the Battle of Haldighati and his loyal horse Chetak.', image: 'images/maharana_pratap.jpg' },
-    rani_padmini: { name: 'Rani Padmini', desc: 'The legendary queen of Chittor, known for her beauty and the supreme sacrifice of Jauhar to protect her honour.', image: 'images/rani_padmini.jpg' },
-    tipu_sultan: { name: 'Tipu Sultan', desc: 'The Tiger of Mysore — pioneered rocket artillery against the British. A noble and brave defender of his kingdom.', image: 'images/tipu_sultan.jpg' },
-    bhagat_singh: { name: 'Bhagat Singh', desc: 'The revolutionary freedom fighter. His sacrifice at age 23 inspired millions to fight for India\'s independence.', image: 'images/bhagat_singh.jpg' },
-    rani_durgavati: { name: 'Rani Durgavati', desc: 'The brave warrior queen of Gondwana. She ruled with wisdom and chose death over surrender against the Mughals.', image: 'images/rani_durgavati.jpg' },
-    subhas_bose: { name: 'Subhas Chandra Bose', desc: 'Netaji — commander of the Indian National Army. "Give me blood and I shall give you freedom!" still echoes.', image: 'images/subhas_chandra_bose.jpg' }
-};
+// ===== 3. TIMELINE DATA =====
+const timelineEvents = [
+    { year: '375 BCE', title: 'Chanakya at Takshashila', desc: 'The master strategist authors the Arthashastra and trains young Chandragupta to unite Bharat.' },
+    { year: '340 BCE', title: 'Rise of Chandragupta Maurya', desc: 'Under Chanakya’s guidance, Chandragupta founds the Maurya Empire and repels Greek armies.' },
+    { year: '261 BCE', title: 'Ashoka & The Turn to Peace', desc: 'Following the Kalinga war, Emperor Ashoka establishes Ahimsa, Buddhist diplomacy, and rock edicts.' },
+    { year: '1191 CE', title: 'Prithviraj Chauhan at Tarain', desc: 'The Rajput king triumphs in the First Battle of Tarain, demonstrating masterful archery and chivalry.' },
+    { year: '1303 CE', title: 'Rani Padmini & Chittorgarh', desc: 'The queen of Chittor stands firm in virtue and dignity against the imperial siege of Mewar.' },
+    { year: '1564 CE', title: 'Rani Durgavati’s Valor', desc: 'The warrior queen of Gondwana commands her armies on elephant Sarman to defend central India.' },
+    { year: '1576 CE', title: 'Maharana Pratap at Haldighati', desc: 'Maharana Pratap and his loyal steed Chetak fight valiantly in the Aravalli passes for independence.' },
+    { year: '1674 CE', title: 'Coronation of Shivaji Maharaj', desc: 'Chhatrapati Shivaji is crowned at Raigad Fort, establishing Hindavi Swarajya and India’s navy.' },
+    { year: '1799 CE', title: 'Tipu Sultan & Mysore Artillery', desc: 'The Tiger of Mysore deploys advanced rocketry and defends Srirangapatna to his last breath.' },
+    { year: '1858 CE', title: 'Rani Lakshmibai’s Freedom Ride', desc: 'The warrior queen of Jhansi leads the 1857 war of independence, becoming an immortal icon.' },
+    { year: '1931 CE', title: 'Bhagat Singh’s Supreme Sacrifice', desc: 'Shaheed Bhagat Singh’s martyrdom at age 23 electrifies the freedom struggle with "Inquilab Zindabad".' },
+    { year: '1943 CE', title: 'Netaji & The Azad Hind Fauj', desc: 'Netaji establishes the Provisional Government of Free India and rallies the nation with "Jai Hind".' }
+];
 
-// ===== PARTICLES BACKGROUND =====
+// ===== 4. DOM INJECTION & SETUP =====
+
+function populateGallery() {
+    const grid = document.getElementById('galleryGrid');
+    if (!grid) return;
+    grid.innerHTML = allCharacters.map(char => `
+        <div class="card" data-era="${char.era}" data-character="${char.id}">
+            <div class="card-image">
+                <img src="${char.image}" alt="${char.name}" loading="lazy">
+                <div class="card-overlay">
+                    <span class="card-era-badge">${char.eraText}</span>
+                    <span class="card-play-hint">🎬 Click for Bio & Video</span>
+                </div>
+            </div>
+            <div class="card-body">
+                <h3 class="card-name">${char.name}</h3>
+                <p class="card-title-role">${char.role}</p>
+                <div class="card-tags">
+                    ${char.tags.map(t => `<span class="tag">${t}</span>`).join('')}
+                </div>
+            </div>
+        </div>
+    `).join('');
+}
+
+function populateVideos() {
+    const grid = document.getElementById('videoGrid');
+    if (!grid) return;
+    grid.innerHTML = allCharacters.map(char => `
+        <div class="video-char-card" data-video="${char.id}">
+            <img src="${char.image}" alt="${char.name}" loading="lazy">
+            <div class="video-char-info">
+                <h4>${char.name}</h4>
+                <p>${char.videoTitle}</p>
+                <span class="video-duration">${char.videoDuration}</span>
+            </div>
+        </div>
+    `).join('');
+}
+
+function populateGenerator() {
+    const container = document.getElementById('characterSelect');
+    if (!container) return;
+    container.innerHTML = allCharacters.map((char, index) => `
+        <div class="select-option ${index === 0 ? 'selected' : ''}" data-value="${char.id}">
+            <span class="option-icon">⚔️</span>
+            <span>${char.name}</span>
+        </div>
+    `).join('');
+}
+
+function populateTimeline() {
+    const container = document.getElementById('timeline');
+    if (!container) return;
+    container.innerHTML = timelineEvents.map(evt => `
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <div class="timeline-year">${evt.year}</div>
+                <h4>${evt.title}</h4>
+                <p>${evt.desc}</p>
+            </div>
+        </div>
+    `).join('');
+}
+
+// ===== 5. AUDIO SYNTHESIS (Offline Web Audio) =====
+let audioCtx = null;
+function getAudioCtx() {
+    if (!audioCtx) {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        if (AudioContext) audioCtx = new AudioContext();
+    }
+    if (audioCtx && audioCtx.state === 'suspended') {
+        audioCtx.resume();
+    }
+    return audioCtx;
+}
+
+function playDramaticGong() {
+    try {
+        const ctx = getAudioCtx();
+        if (!ctx) return;
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(120, ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(40, ctx.currentTime + 3);
+        gain.gain.setValueAtTime(0.3, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 3.5);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + 3.5);
+    } catch (e) {}
+}
+
+function playTypeClick() {
+    try {
+        const ctx = getAudioCtx();
+        if (!ctx) return;
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(400 + Math.random() * 200, ctx.currentTime);
+        gain.gain.setValueAtTime(0.02, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.05);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.05);
+    } catch (e) {}
+}
+
+// ===== 6. PARTICLES BACKGROUND =====
 function initParticles() {
     const canvas = document.getElementById('particles');
+    if (!canvas) return;
     const ctx = canvas.getContext('2d');
     let particles = [];
-    function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
-    resize(); window.addEventListener('resize', resize);
+    function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
     class Particle {
         constructor() { this.reset(); }
         reset() {
-            this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height;
-            this.size = Math.random() * 2 + 0.5; this.speedX = (Math.random() - 0.5) * 0.3;
-            this.speedY = (Math.random() - 0.5) * 0.3; this.opacity = Math.random() * 0.3 + 0.1;
-            this.color = Math.random() > 0.5 ? '255,153,51' : '240,180,65';
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.size = Math.random() * 2 + 0.5;
+            this.speedX = (Math.random() - 0.5) * 0.3;
+            this.speedY = (Math.random() - 0.5) * 0.3;
+            this.opacity = Math.random() * 0.3 + 0.1;
+            this.color = Math.random() > 0.5 ? '255,153,51' : '240,192,64';
         }
-        update() { this.x += this.speedX; this.y += this.speedY; if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) this.reset(); }
-        draw() { ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fillStyle = `rgba(${this.color},${this.opacity})`; ctx.fill(); }
+        update() {
+            this.x += this.speedX;
+            this.y += this.speedY;
+            if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) this.reset();
+        }
+        draw() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(${this.color},${this.opacity})`;
+            ctx.fill();
+        }
     }
     for (let i = 0; i < 60; i++) particles.push(new Particle());
-    function animate() { ctx.clearRect(0, 0, canvas.width, canvas.height); particles.forEach(p => { p.update(); p.draw(); }); requestAnimationFrame(animate); }
+
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach(p => { p.update(); p.draw(); });
+        requestAnimationFrame(animate);
+    }
     animate();
 }
 
-// ===== NAVBAR =====
+// ===== 7. NAVBAR & SCROLL BEHAVIOR =====
 function initNavbar() {
     const navbar = document.querySelector('.navbar');
-    const navToggle = document.querySelector('.nav-toggle');
-    const navLinks = document.querySelector('.nav-links');
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
     const links = document.querySelectorAll('.nav-link');
-    window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 50); });
-    navToggle.addEventListener('click', () => { navLinks.classList.toggle('open'); });
-    links.forEach(link => { link.addEventListener('click', () => { links.forEach(l => l.classList.remove('active')); link.classList.add('active'); navLinks.classList.remove('open'); }); });
+
+    window.addEventListener('scroll', () => {
+        navbar.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    if (navToggle) {
+        navToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+        });
+    }
+
+    links.forEach(link => {
+        link.addEventListener('click', () => {
+            links.forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+            if (navLinks) navLinks.classList.remove('open');
+        });
+    });
+
     const sections = document.querySelectorAll('section[id]');
     window.addEventListener('scroll', () => {
-        const scrollY = window.scrollY + 100;
+        const scrollY = window.scrollY + 120;
         sections.forEach(section => {
-            const top = section.offsetTop, height = section.offsetHeight, id = section.getAttribute('id');
-            if (scrollY >= top && scrollY < top + height) { links.forEach(l => l.classList.remove('active')); const a = document.querySelector(`.nav-link[href="#${id}"]`); if (a) a.classList.add('active'); }
+            const top = section.offsetTop;
+            const height = section.offsetHeight;
+            const id = section.getAttribute('id');
+            if (scrollY >= top && scrollY < top + height) {
+                links.forEach(l => l.classList.remove('active'));
+                const active = document.querySelector(`.nav-link[href="#${id}"]`);
+                if (active) active.classList.add('active');
+            }
         });
     });
 }
 
-// ===== HERO CAROUSEL =====
+// ===== 8. HERO CAROUSEL =====
 function initHeroCarousel() {
     const images = document.querySelectorAll('.carousel-img');
+    const nameEl = document.getElementById('heroCarouselName');
+    if (!images.length) return;
+
+    const names = [
+        'Chandragupta Maurya',
+        'Rani Lakshmibai',
+        'Chhatrapati Shivaji Maharaj',
+        'Maharana Pratap',
+        'Shaheed Bhagat Singh'
+    ];
+
     let current = 0;
-    setInterval(() => { images[current].classList.remove('active'); current = (current + 1) % images.length; images[current].classList.add('active'); }, 4000);
+    setInterval(() => {
+        images[current].classList.remove('active');
+        current = (current + 1) % images.length;
+        images[current].classList.add('active');
+        if (nameEl) {
+            nameEl.style.opacity = '0';
+            setTimeout(() => {
+                nameEl.textContent = names[current] || '';
+                nameEl.style.opacity = '1';
+            }, 300);
+        }
+    }, 4000);
 }
 
-// ===== STAT COUNTERS =====
+// ===== 9. STAT COUNTERS =====
 function initCounters() {
     const stats = document.querySelectorAll('.stat-num');
     const obs = new IntersectionObserver(entries => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                const el = entry.target, target = parseInt(el.dataset.target); let current = 0; const step = target / 60;
+                const el = entry.target;
+                const target = parseInt(el.dataset.target, 10);
+                let current = 0;
+                const step = Math.max(1, target / 50);
                 const timer = setInterval(() => {
-                    current += step; if (current >= target) { current = target; clearInterval(timer); }
-                    el.textContent = Math.floor(current);
-                    if (target === 100) el.textContent = Math.floor(current) + '%';
-                    if (target === 3000) el.textContent = Math.floor(current).toLocaleString() + '+';
-                }, 16);
+                    current += step;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    if (target === 3000) {
+                        el.textContent = Math.floor(current).toLocaleString() + '+';
+                    } else {
+                        el.textContent = Math.floor(current);
+                    }
+                }, 20);
                 obs.unobserve(el);
             }
         });
@@ -288,55 +718,81 @@ function initCounters() {
     stats.forEach(s => obs.observe(s));
 }
 
-// ===== GALLERY FILTER =====
-function initGalleryFilter() {
-    const btns = document.querySelectorAll('.filter-btn'), cards = document.querySelectorAll('.card');
+// ===== 10. GALLERY FILTER & MODAL =====
+let currentModalCharacter = null;
+
+function initGallery() {
+    const btns = document.querySelectorAll('.filter-btn');
+    const modal = document.getElementById('characterModal');
+    const closeBtn = modal ? modal.querySelector('.modal-close') : null;
+    const backdrop = modal ? modal.querySelector('.modal-backdrop') : null;
+
     btns.forEach(btn => {
         btn.addEventListener('click', () => {
-            btns.forEach(b => b.classList.remove('active')); btn.classList.add('active');
+            btns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
             const filter = btn.dataset.filter;
+            const cards = document.querySelectorAll('.card');
             cards.forEach(card => {
-                if (filter === 'all' || card.dataset.era === filter) { card.classList.remove('hidden'); card.style.display = ''; }
-                else { card.classList.add('hidden'); setTimeout(() => card.style.display = 'none', 300); }
+                if (filter === 'all' || card.dataset.era === filter) {
+                    card.classList.remove('hidden');
+                    card.style.display = '';
+                } else {
+                    card.classList.add('hidden');
+                    setTimeout(() => { card.style.display = 'none'; }, 250);
+                }
             });
         });
     });
-}
 
-// ===== MODAL =====
-let currentModalCharacter = null;
-function initModal() {
-    const modal = document.getElementById('characterModal'), cards = document.querySelectorAll('.card');
-    const closeBtn = modal.querySelector('.modal-close'), backdrop = modal.querySelector('.modal-backdrop');
-    cards.forEach(card => {
-        card.addEventListener('click', () => {
-            const key = card.dataset.character, data = characterData[key]; if (!data) return;
-            currentModalCharacter = key;
-            document.getElementById('modalImg').src = data.image;
-            document.getElementById('modalEra').textContent = data.era;
-            document.getElementById('modalName').textContent = data.name;
-            document.getElementById('modalRole').textContent = data.role;
-            document.getElementById('modalBio').textContent = data.bio;
-            document.getElementById('modalStats').innerHTML = data.stats.map(s => `<div class="modal-stat"><span class="modal-stat-label">${s.label}</span><span class="modal-stat-value">${s.value}</span></div>`).join('');
-            document.getElementById('modalQuote').textContent = data.quote;
-            modal.classList.add('active'); document.body.style.overflow = 'hidden';
-        });
+    document.getElementById('galleryGrid').addEventListener('click', e => {
+        const card = e.target.closest('.card');
+        if (!card) return;
+        const charId = card.dataset.character;
+        const char = allCharacters.find(c => c.id === charId);
+        if (!char || !modal) return;
+
+        currentModalCharacter = charId;
+        document.getElementById('modalImg').src = char.image;
+        document.getElementById('modalEra').textContent = char.eraText;
+        document.getElementById('modalName').textContent = char.name;
+        document.getElementById('modalRole').textContent = char.role;
+        document.getElementById('modalBio').textContent = char.bio;
+        document.getElementById('modalStats').innerHTML = char.stats.map(s => `
+            <div class="modal-stat">
+                <span class="modal-stat-label">${s.label}</span>
+                <span class="modal-stat-value">${s.value}</span>
+            </div>
+        `).join('');
+        document.getElementById('modalQuote').textContent = char.quote;
+
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
     });
-    function close() { modal.classList.remove('active'); document.body.style.overflow = ''; }
-    closeBtn.addEventListener('click', close); backdrop.addEventListener('click', close);
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+
+    function closeModal() {
+        if (!modal) return;
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+    if (backdrop) backdrop.addEventListener('click', closeModal);
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && modal && modal.classList.contains('active')) closeModal();
+    });
 }
 
-// Play story from modal button
 window.playStoryFromModal = function() {
-    if (currentModalCharacter && videoStories[currentModalCharacter]) {
-        document.getElementById('characterModal').classList.remove('active');
+    if (currentModalCharacter) {
+        const modal = document.getElementById('characterModal');
+        if (modal) modal.classList.remove('active');
         document.body.style.overflow = '';
         startCinema(currentModalCharacter);
     }
 };
 
-// ===== CINEMA VIDEO PLAYER =====
+// ===== 11. CINEMA VIDEO ENGINE =====
 let cinemaTimers = [];
 let cinemaPlaying = false;
 let cinemaCurrentScene = 0;
@@ -346,22 +802,23 @@ let cinemaElapsed = 0;
 let cinemaInterval = null;
 
 function startCinema(key) {
-    const story = videoStories[key];
+    const story = videoStoryScripts[key];
     if (!story) return;
+
+    playDramaticGong();
     cinemaStoryKey = key;
     cinemaCurrentScene = 0;
     cinemaElapsed = 0;
     cinemaPlaying = true;
-    cinemaTotalTime = story.chapters.reduce((a, c) => a + c.duration, 0);
+    cinemaTotalTime = story.chapters.reduce((sum, ch) => sum + ch.duration, 0);
 
     const player = document.getElementById('cinemaPlayer');
     player.style.display = 'block';
     document.body.style.overflow = 'hidden';
 
-    // Set background
     document.getElementById('cinemaBg').style.backgroundImage = `url(${story.image})`;
 
-    // Build chapter dots
+    // Chapter markers
     const dotsEl = document.getElementById('cinemaChapterDots');
     dotsEl.innerHTML = '';
     let accumulated = 0;
@@ -375,7 +832,7 @@ function startCinema(key) {
         accumulated += ch.duration;
     });
 
-    // Start progress tracker
+    // Progress counter
     clearInterval(cinemaInterval);
     cinemaInterval = setInterval(() => {
         if (!cinemaPlaying) return;
@@ -388,10 +845,7 @@ function startCinema(key) {
         document.getElementById('cinemaTime').textContent = `${m}:${s}`;
     }, 100);
 
-    // Create floating particles in cinema
     createCinemaParticles();
-
-    // Start playing scenes
     playScene(0);
 }
 
@@ -399,40 +853,51 @@ function clearAllCinema() {
     cinemaTimers.forEach(t => clearTimeout(t));
     cinemaTimers = [];
     const ids = ['cinemaChapter', 'cinemaTitle', 'cinemaSubtitle', 'cinemaNarration', 'cinemaQuote', 'cinemaCredit'];
-    ids.forEach(id => { const el = document.getElementById(id); el.style.opacity = '0'; el.innerHTML = ''; });
+    ids.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+            el.style.opacity = '0';
+            el.innerHTML = '';
+        }
+    });
     const charImg = document.getElementById('cinemaCharImg');
-    charImg.style.opacity = '0';
-    charImg.classList.remove('ken-burns');
-    charImg.innerHTML = '';
+    if (charImg) {
+        charImg.style.opacity = '0';
+        charImg.classList.remove('ken-burns');
+        charImg.innerHTML = '';
+    }
 }
 
 function playScene(index) {
-    const story = videoStories[cinemaStoryKey];
+    const story = videoStoryScripts[cinemaStoryKey];
     if (!story || index >= story.chapters.length) {
         closeCinema();
         return;
     }
+
     cinemaCurrentScene = index;
     clearAllCinema();
 
     const scene = story.chapters[index];
-    const data = characterData[cinemaStoryKey];
+    const charInfo = allCharacters.find(c => c.id === cinemaStoryKey);
 
     switch (scene.type) {
         case 'title':
             document.getElementById('cinemaTitle').textContent = story.title;
             document.getElementById('cinemaTitle').style.opacity = '1';
             document.getElementById('cinemaSubtitle').textContent = story.subtitle;
-            const t1 = setTimeout(() => { document.getElementById('cinemaSubtitle').style.opacity = '1'; }, 800);
-            cinemaTimers.push(t1);
+            cinemaTimers.push(setTimeout(() => {
+                document.getElementById('cinemaSubtitle').style.opacity = '1';
+            }, 600));
             break;
 
         case 'chapter':
             document.getElementById('cinemaChapter').textContent = scene.label;
             document.getElementById('cinemaChapter').style.opacity = '1';
             document.getElementById('cinemaTitle').textContent = scene.title;
-            const t2 = setTimeout(() => { document.getElementById('cinemaTitle').style.opacity = '1'; }, 600);
-            cinemaTimers.push(t2);
+            cinemaTimers.push(setTimeout(() => {
+                document.getElementById('cinemaTitle').style.opacity = '1';
+            }, 500));
             break;
 
         case 'narration':
@@ -442,33 +907,34 @@ function playScene(index) {
 
         case 'character':
             const charImg = document.getElementById('cinemaCharImg');
-            charImg.innerHTML = `<img src="${story.image}" alt="${story.title}" style="width:100%;height:100%;object-fit:cover;">`;
+            charImg.innerHTML = `<img src="${story.image}" alt="${story.title}">`;
             charImg.style.opacity = '1';
-            const t3 = setTimeout(() => { charImg.classList.add('ken-burns'); }, 100);
-            cinemaTimers.push(t3);
+            cinemaTimers.push(setTimeout(() => {
+                charImg.classList.add('ken-burns');
+            }, 80));
             break;
 
         case 'quote':
-            document.getElementById('cinemaQuote').textContent = data ? data.quote : '';
-            const t4 = setTimeout(() => { document.getElementById('cinemaQuote').style.opacity = '1'; }, 400);
-            cinemaTimers.push(t4);
+            document.getElementById('cinemaQuote').textContent = charInfo ? charInfo.quote : '';
+            cinemaTimers.push(setTimeout(() => {
+                document.getElementById('cinemaQuote').style.opacity = '1';
+            }, 400));
             break;
 
         case 'credit':
             document.getElementById('cinemaCredit').innerHTML = `
-                <div style="font-family:'Cinzel Decorative',serif;font-size:24px;color:#ff9933;margin-bottom:12px;">इतिहास Anime</div>
-                <div style="font-size:14px;color:#6a6a80;">A tribute to the legends of Bharat</div>
-                <div style="font-size:12px;color:#6a6a80;margin-top:8px;">Every great personality portrayed with honour and dignity 🙏</div>
+                <div style="font-family:'Cinzel Decorative',serif;font-size:24px;color:#ff9933;margin-bottom:8px;">इतिहास Anime</div>
+                <div style="font-size:14px;color:#9999b5;">A tribute to the immortal heroes of Bharat</div>
+                <div style="font-size:12px;color:#5c5c78;margin-top:8px;">Portrayed with deepest honor, dignity & historical reverence 🙏</div>
             `;
             document.getElementById('cinemaCredit').style.opacity = '1';
             break;
     }
 
-    // Schedule next scene
-    const next = setTimeout(() => {
+    const nextTimer = setTimeout(() => {
         if (cinemaPlaying) playScene(index + 1);
     }, scene.duration);
-    cinemaTimers.push(next);
+    cinemaTimers.push(nextTimer);
 }
 
 function typeText(el, text, duration) {
@@ -476,24 +942,28 @@ function typeText(el, text, duration) {
     const delay = duration / chars.length;
     el.textContent = '';
     chars.forEach((char, i) => {
-        const t = setTimeout(() => { el.textContent += char; }, delay * i);
+        const t = setTimeout(() => {
+            el.textContent += char;
+            if (i % 3 === 0) playTypeClick();
+        }, delay * i);
         cinemaTimers.push(t);
     });
 }
 
 function createCinemaParticles() {
     const container = document.getElementById('cinemaParticles');
+    if (!container) return;
     container.innerHTML = '';
-    for (let i = 0; i < 30; i++) {
+    for (let i = 0; i < 25; i++) {
         const p = document.createElement('div');
         const x = Math.random() * 100;
-        const dur = 6 + Math.random() * 10;
-        const size = 1 + Math.random() * 3;
-        const delay = Math.random() * 5;
+        const dur = 6 + Math.random() * 8;
+        const size = 1.5 + Math.random() * 2.5;
+        const delay = Math.random() * 4;
         p.style.cssText = `
             position:absolute; left:${x}%; bottom:-10px;
             width:${size}px; height:${size}px;
-            background:rgba(255,153,51,${0.2 + Math.random() * 0.3});
+            background:rgba(255,153,51,${0.25 + Math.random() * 0.35});
             border-radius:50%;
             animation: cinemaFloat ${dur}s ${delay}s linear infinite;
         `;
@@ -505,99 +975,142 @@ function closeCinema() {
     clearAllCinema();
     clearInterval(cinemaInterval);
     cinemaPlaying = false;
-    document.getElementById('cinemaPlayer').style.display = 'none';
+    const player = document.getElementById('cinemaPlayer');
+    if (player) player.style.display = 'none';
     document.body.style.overflow = '';
 }
 
-function initCinema() {
-    // Video card clicks
-    document.querySelectorAll('.video-char-card').forEach(card => {
-        card.addEventListener('click', () => {
-            startCinema(card.dataset.video);
+function initCinemaControls() {
+    document.getElementById('videoGrid').addEventListener('click', e => {
+        const card = e.target.closest('.video-char-card');
+        if (!card) return;
+        startCinema(card.dataset.video);
+    });
+
+    const playPauseBtn = document.getElementById('cinemaPlayPause');
+    if (playPauseBtn) {
+        playPauseBtn.addEventListener('click', () => {
+            cinemaPlaying = !cinemaPlaying;
+            playPauseBtn.textContent = cinemaPlaying ? '⏸️' : '▶️';
+            if (cinemaPlaying) playScene(cinemaCurrentScene);
+            else cinemaTimers.forEach(t => clearTimeout(t));
         });
-    });
+    }
 
-    // Play/Pause
-    document.getElementById('cinemaPlayPause').addEventListener('click', () => {
-        cinemaPlaying = !cinemaPlaying;
-        document.getElementById('cinemaPlayPause').textContent = cinemaPlaying ? '⏸️' : '▶️';
-        if (cinemaPlaying) playScene(cinemaCurrentScene);
-    });
+    const closeBtn = document.getElementById('cinemaClose');
+    if (closeBtn) closeBtn.addEventListener('click', closeCinema);
 
-    // Close
-    document.getElementById('cinemaClose').addEventListener('click', closeCinema);
+    const fsBtn = document.getElementById('cinemaFullscreen');
+    if (fsBtn) {
+        fsBtn.addEventListener('click', () => {
+            const player = document.getElementById('cinemaPlayer');
+            if (document.fullscreenElement) document.exitFullscreen();
+            else player.requestFullscreen().catch(() => {});
+        });
+    }
 
-    // Fullscreen
-    document.getElementById('cinemaFullscreen').addEventListener('click', () => {
-        const player = document.getElementById('cinemaPlayer');
-        if (document.fullscreenElement) document.exitFullscreen();
-        else player.requestFullscreen().catch(() => {});
-    });
-
-    // Escape key
     document.addEventListener('keydown', e => {
-        if (e.key === 'Escape' && document.getElementById('cinemaPlayer').style.display === 'block') closeCinema();
+        if (e.key === 'Escape' && document.getElementById('cinemaPlayer').style.display === 'block') {
+            closeCinema();
+        }
     });
 }
 
-// ===== GENERATOR =====
+// ===== 12. AI GENERATOR =====
 function initGenerator() {
-    const selectOptions = document.querySelectorAll('.select-option');
+    const charContainer = document.getElementById('characterSelect');
     const styleBtns = document.querySelectorAll('.style-btn');
     const sceneBtns = document.querySelectorAll('.scene-btn');
     const generateBtn = document.getElementById('generateBtn');
-    let selectedCharacter = null;
-    selectOptions.forEach(opt => { opt.addEventListener('click', () => { selectOptions.forEach(o => o.classList.remove('selected')); opt.classList.add('selected'); selectedCharacter = opt.dataset.value; }); });
-    styleBtns.forEach(btn => { btn.addEventListener('click', () => { styleBtns.forEach(b => b.classList.remove('active')); btn.classList.add('active'); }); });
-    sceneBtns.forEach(btn => { btn.addEventListener('click', () => { sceneBtns.forEach(b => b.classList.remove('active')); btn.classList.add('active'); }); });
-    generateBtn.addEventListener('click', () => {
-        if (!selectedCharacter) { generateBtn.style.animation = 'shake 0.5s ease'; setTimeout(() => generateBtn.style.animation = '', 500); return; }
-        const btnText = generateBtn.querySelector('.btn-text'), btnLoading = generateBtn.querySelector('.btn-loading');
-        btnText.style.display = 'none'; btnLoading.style.display = 'inline-flex'; generateBtn.disabled = true;
-        setTimeout(() => {
-            const charData = generatorCharacters[selectedCharacter];
-            const placeholder = document.querySelector('.preview-placeholder'), result = document.querySelector('.preview-result');
-            document.getElementById('previewImg').src = charData.image;
-            document.getElementById('previewName').textContent = charData.name;
-            document.getElementById('previewDesc').textContent = charData.desc;
-            placeholder.style.display = 'none'; result.style.display = 'block'; result.style.animation = 'fadeIn 0.8s ease';
-            btnText.style.display = 'inline-flex'; btnLoading.style.display = 'none'; generateBtn.disabled = false;
-        }, 2500);
+
+    let selectedCharId = allCharacters[0].id;
+
+    if (charContainer) {
+        charContainer.addEventListener('click', e => {
+            const opt = e.target.closest('.select-option');
+            if (!opt) return;
+            document.querySelectorAll('.select-option').forEach(o => o.classList.remove('selected'));
+            opt.classList.add('selected');
+            selectedCharId = opt.dataset.value;
+        });
+    }
+
+    styleBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            styleBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        });
     });
+
+    sceneBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            sceneBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        });
+    });
+
+    if (generateBtn) {
+        generateBtn.addEventListener('click', () => {
+            const char = allCharacters.find(c => c.id === selectedCharId);
+            if (!char) return;
+
+            const btnText = generateBtn.querySelector('.btn-text');
+            const btnLoading = generateBtn.querySelector('.btn-loading');
+            if (btnText) btnText.style.display = 'none';
+            if (btnLoading) btnLoading.style.display = 'inline-flex';
+            generateBtn.disabled = true;
+
+            setTimeout(() => {
+                const placeholder = document.querySelector('.preview-placeholder');
+                const result = document.querySelector('.preview-result');
+                const previewImg = document.getElementById('previewImg');
+                const previewName = document.getElementById('previewName');
+                const previewDesc = document.getElementById('previewDesc');
+
+                if (previewImg) previewImg.src = char.image;
+                if (previewName) previewName.textContent = char.name;
+                if (previewDesc) previewDesc.textContent = `${char.role} • ${char.eraText} — Rendered with historically researched anime detail.`;
+
+                if (placeholder) placeholder.style.display = 'none';
+                if (result) {
+                    result.style.display = 'block';
+                    result.style.animation = 'fadeIn 0.7s ease';
+                }
+
+                if (btnText) btnText.style.display = 'inline-flex';
+                if (btnLoading) btnLoading.style.display = 'none';
+                generateBtn.disabled = false;
+            }, 1800);
+        });
+    }
 }
 
-// ===== TIMELINE =====
-function initTimeline() {
+// ===== 13. TIMELINE & SCROLL REVEAL =====
+function initTimelineScroll() {
     const items = document.querySelectorAll('.timeline-item');
-    const obs = new IntersectionObserver(entries => { entries.forEach((entry, i) => { if (entry.isIntersecting) setTimeout(() => entry.target.classList.add('visible'), i * 100); }); }, { threshold: 0.2 });
+    const obs = new IntersectionObserver(entries => {
+        entries.forEach((entry, i) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => entry.target.classList.add('visible'), i * 80);
+            }
+        });
+    }, { threshold: 0.15 });
     items.forEach(item => obs.observe(item));
 }
 
-// ===== SCROLL ANIMATIONS =====
-function initScrollAnimations() {
-    const cards = document.querySelectorAll('.card');
-    const obs = new IntersectionObserver(entries => { entries.forEach((entry, i) => { if (entry.isIntersecting) { entry.target.style.animation = `fadeInUp 0.6s ease ${i * 0.1}s backwards`; obs.unobserve(entry.target); } }); }, { threshold: 0.1 });
-    cards.forEach(card => obs.observe(card));
-}
-
-// ===== INIT =====
+// ===== 14. INITIALIZE ALL ON LOAD =====
 document.addEventListener('DOMContentLoaded', () => {
+    populateGallery();
+    populateVideos();
+    populateGenerator();
+    populateTimeline();
+
     initParticles();
     initNavbar();
     initHeroCarousel();
     initCounters();
-    initGalleryFilter();
-    initModal();
-    initCinema();
+    initGallery();
+    initCinemaControls();
     initGenerator();
-    initTimeline();
-    initScrollAnimations();
+    initTimelineScroll();
 });
-
-// Add dynamic keyframes
-const style = document.createElement('style');
-style.textContent = `
-@keyframes shake { 0%,100%{transform:translateX(0)} 20%{transform:translateX(-8px)} 40%{transform:translateX(8px)} 60%{transform:translateX(-4px)} 80%{transform:translateX(4px)} }
-@keyframes cinemaFloat { 0%{transform:translateY(0);opacity:0} 10%{opacity:1} 90%{opacity:1} 100%{transform:translateY(-100vh);opacity:0} }
-`;
-document.head.appendChild(style);
