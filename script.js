@@ -1042,7 +1042,7 @@ window.playStoryFromModal = function() {
     }
 };
 
-// ===== 11. CINEMA VIDEO ENGINE =====
+// ===== 11. VOICE NARRATION & CINEMA VIDEO ENGINE =====
 let cinemaTimers = [];
 let cinemaPlaying = false;
 let cinemaCurrentScene = 0;
@@ -1050,6 +1050,76 @@ let cinemaStoryKey = null;
 let cinemaTotalTime = 0;
 let cinemaElapsed = 0;
 let cinemaInterval = null;
+let voiceNarrationEnabled = true;
+
+// Preload speech synthesis voices
+let availableVoices = [];
+function loadVoices() {
+    if ('speechSynthesis' in window) {
+        availableVoices = window.speechSynthesis.getVoices();
+    }
+}
+if ('speechSynthesis' in window) {
+    loadVoices();
+    window.speechSynthesis.onvoiceschanged = loadVoices;
+}
+
+function getBestVoice() {
+    if (!('speechSynthesis' in window)) return null;
+    if (!availableVoices || !availableVoices.length) {
+        availableVoices = window.speechSynthesis.getVoices();
+    }
+    if (!availableVoices || !availableVoices.length) return null;
+
+    // 1. Prefer Indian English accents
+    const indianVoice = availableVoices.find(v => 
+        (v.lang && (v.lang === 'en-IN' || v.lang === 'en_IN')) || 
+        (v.name && v.name.toLowerCase().includes('india'))
+    );
+    if (indianVoice) return indianVoice;
+
+    // 2. High-quality natural English voices
+    const naturalVoice = availableVoices.find(v => 
+        v.lang && v.lang.startsWith('en') && 
+        (v.name.includes('Natural') || v.name.includes('Google') || v.name.includes('Samantha') || v.name.includes('Daniel') || v.name.includes('Arthur') || v.name.includes('Serena'))
+    );
+    if (naturalVoice) return naturalVoice;
+
+    // 3. Fallback to any English voice
+    const anyEnglish = availableVoices.find(v => v.lang && v.lang.startsWith('en'));
+    return anyEnglish || availableVoices[0];
+}
+
+function speakNarration(rawText, rate = 0.94) {
+    if (!voiceNarrationEnabled || !('speechSynthesis' in window)) return;
+    try {
+        window.speechSynthesis.cancel();
+
+        // Clean text for natural speech pronunciation
+        const clean = rawText
+            .replace(/[☸⚔️🎬🧠👑🙏🔥🌸📜⏱️]/g, '')
+            .replace(/["“”'‘’]/g, '')
+            .replace(/\bBCE\b/g, 'Before Common Era')
+            .replace(/\bCE\b/g, 'Common Era')
+            .replace(/\bINA\b/g, 'I. N. A.')
+            .replace(/\bHSRA\b/g, 'H. S. R. A.')
+            .trim();
+
+        if (!clean) return;
+
+        const utterance = new SpeechSynthesisUtterance(clean);
+        utterance.rate = rate;
+        utterance.pitch = 1.0;
+        utterance.volume = 1.0;
+
+        const voice = getBestVoice();
+        if (voice) utterance.voice = voice;
+
+        window.speechSynthesis.speak(utterance);
+    } catch (e) {
+        console.warn('Speech synthesis notice:', e);
+    }
+}
 
 function startCinema(key) {
     const story = videoStoryScripts[key];
@@ -1102,6 +1172,9 @@ function startCinema(key) {
 function clearAllCinema() {
     cinemaTimers.forEach(t => clearTimeout(t));
     cinemaTimers = [];
+    if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+    }
     const ids = ['cinemaChapter', 'cinemaTitle', 'cinemaSubtitle', 'cinemaNarration', 'cinemaQuote', 'cinemaCredit'];
     ids.forEach(id => {
         const el = document.getElementById(id);
@@ -1139,6 +1212,8 @@ function playScene(index) {
             cinemaTimers.push(setTimeout(() => {
                 document.getElementById('cinemaSubtitle').style.opacity = '1';
             }, 600));
+            // Spoken voice narration for the title
+            speakNarration(`${story.title}. ${story.subtitle}.`);
             break;
 
         case 'chapter':
@@ -1148,11 +1223,15 @@ function playScene(index) {
             cinemaTimers.push(setTimeout(() => {
                 document.getElementById('cinemaTitle').style.opacity = '1';
             }, 500));
+            // Spoken voice narration for the chapter
+            speakNarration(`${scene.label}. ${scene.title}.`);
             break;
 
         case 'narration':
             typeText(document.getElementById('cinemaNarration'), scene.text, scene.duration * 0.7);
             document.getElementById('cinemaNarration').style.opacity = '1';
+            // Spoken voice narration for the story text
+            speakNarration(scene.text);
             break;
 
         case 'character':
@@ -1162,6 +1241,9 @@ function playScene(index) {
             cinemaTimers.push(setTimeout(() => {
                 charImg.classList.add('ken-burns');
             }, 80));
+            if (charInfo) {
+                speakNarration(`${charInfo.name}, ${charInfo.role}.`);
+            }
             break;
 
         case 'quote':
@@ -1169,6 +1251,9 @@ function playScene(index) {
             cinemaTimers.push(setTimeout(() => {
                 document.getElementById('cinemaQuote').style.opacity = '1';
             }, 400));
+            if (charInfo && charInfo.quote) {
+                speakNarration(`Historic Quote: ${charInfo.quote}`);
+            }
             break;
 
         case 'credit':
@@ -1178,6 +1263,7 @@ function playScene(index) {
                 <div style="font-size:12px;color:#5c5c78;margin-top:8px;">Portrayed with deepest honor, dignity & historical reverence 🙏</div>
             `;
             document.getElementById('cinemaCredit').style.opacity = '1';
+            speakNarration("इतिहास Anime. A tribute to the immortal legends of Bharat.");
             break;
     }
 
@@ -1242,8 +1328,39 @@ function initCinemaControls() {
         playPauseBtn.addEventListener('click', () => {
             cinemaPlaying = !cinemaPlaying;
             playPauseBtn.textContent = cinemaPlaying ? '⏸️' : '▶️';
-            if (cinemaPlaying) playScene(cinemaCurrentScene);
-            else cinemaTimers.forEach(t => clearTimeout(t));
+            if (cinemaPlaying) {
+                if ('speechSynthesis' in window && window.speechSynthesis.paused) {
+                    window.speechSynthesis.resume();
+                }
+                playScene(cinemaCurrentScene);
+            } else {
+                cinemaTimers.forEach(t => clearTimeout(t));
+                if ('speechSynthesis' in window && window.speechSynthesis.speaking) {
+                    window.speechSynthesis.pause();
+                }
+            }
+        });
+    }
+
+    const voiceToggleBtn = document.getElementById('cinemaVoiceToggle');
+    const voiceStatusEl = document.getElementById('voiceStatus');
+    if (voiceToggleBtn) {
+        voiceToggleBtn.addEventListener('click', () => {
+            voiceNarrationEnabled = !voiceNarrationEnabled;
+            if (voiceStatusEl) {
+                voiceStatusEl.textContent = voiceNarrationEnabled ? 'VOICE: ON' : 'VOICE: OFF';
+                voiceStatusEl.style.color = voiceNarrationEnabled ? 'var(--gold)' : 'var(--text-muted)';
+            }
+            if (!voiceNarrationEnabled && 'speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+            } else if (voiceNarrationEnabled) {
+                const story = videoStoryScripts[cinemaStoryKey];
+                if (story && story.chapters[cinemaCurrentScene]) {
+                    const sc = story.chapters[cinemaCurrentScene];
+                    if (sc.type === 'narration') speakNarration(sc.text);
+                    else if (sc.type === 'chapter') speakNarration(`${sc.label}. ${sc.title}.`);
+                }
+            }
         });
     }
 
