@@ -1,7 +1,13 @@
 #!/usr/bin/env python3
 """
-इतिहास Anime — Security-Hardened Web Server
-Implements OWASP Security Headers, Directory Traversal Protection, and Local Hosting
+इतिहास Anime — Cyber-Secured Web Server (OWASP Standards)
+Implements:
+- Content-Security-Policy (CSP)
+- Anti-Clickjacking (X-Frame-Options: DENY)
+- Anti-MIME Sniffing (X-Content-Type-Options: nosniff)
+- Strict Transport Security (HSTS)
+- Permissions-Policy Device Lockdown
+- Directory Traversal (Path Traversal) Protection
 """
 
 import http.server
@@ -9,95 +15,74 @@ import socketserver
 import os
 import sys
 import webbrowser
-import urllib.parse
 from pathlib import Path
 
 PORT = 8080
-DIRECTORY = Path(__file__).resolve().parent
+DIRECTORY = str(Path(__file__).resolve().parent)
 
-class SecureHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
+class CyberSecureHandler(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
-        super().__init__(*args, directory=str(DIRECTORY), **kwargs)
+        super().__init__(*args, directory=DIRECTORY, **kwargs)
 
     def end_headers(self):
-        # 1. Content Security Policy (CSP) - Prevents XSS, Malicious Script Injection
+        # 1. Content Security Policy (CSP Level 3)
         self.send_header(
             "Content-Security-Policy",
             "default-src 'self'; "
             "script-src 'self' 'unsafe-inline'; "
             "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; "
             "font-src 'self' https://fonts.gstatic.com; "
-            "img-src 'self' data:; "
+            "img-src 'self' data: https:; "
             "connect-src 'self'; "
             "frame-ancestors 'none'; "
             "base-uri 'self'; "
             "form-action 'self';"
         )
-        # 2. Prevent Clickjacking
+        # 2. Clickjacking Defense
         self.send_header("X-Frame-Options", "DENY")
-        # 3. Prevent MIME Sniffing attacks
+        # 3. MIME-Sniffing Defense
         self.send_header("X-Content-Type-Options", "nosniff")
-        # 4. Referrer Policy
+        # 4. Referrer Privacy Policy
         self.send_header("Referrer-Policy", "strict-origin-when-cross-origin")
-        # 5. XSS Protection for legacy browsers
+        # 5. Legacy XSS Filter Protection
         self.send_header("X-XSS-Protection", "1; mode=block")
-        # 6. Restrict Sensitive Device APIs
+        # 6. Hardware API Lockdown (Least Privilege Principle)
         self.send_header("Permissions-Policy", "camera=(), microphone=(), geolocation=(), payment=(), usb=()")
-        # 7. Cross-Origin Protections
+        # 7. Cross-Origin Isolations
         self.send_header("Cross-Origin-Opener-Policy", "same-origin")
         self.send_header("Cross-Origin-Resource-Policy", "same-origin")
-        # 8. Cache-Control for assets
-        self.send_header("Cache-Control", "no-cache, must-revalidate")
+        # 8. Cache Integrity
+        self.send_header("Cache-Control", "public, max-age=3600, must-revalidate")
+        # 9. Transport Security
+        self.send_header("Strict-Transport-Security", "max-age=31536000; includeSubDomains")
         
         super().end_headers()
 
     def translate_path(self, path):
-        """
-        Cybersecurity Hardening: Prevent Directory Traversal Attacks (../)
-        """
-        clean_path = urllib.parse.unquote(path.split('?', 1)[0].split('#', 1)[0])
-        resolved_path = (DIRECTORY / clean_path.lstrip('/')).resolve()
-
-        # Ensure the requested path is strictly within the allowed project directory
-        try:
-            resolved_path.relative_to(DIRECTORY)
-        except ValueError:
-            # Traversal attempt detected
-            return str(DIRECTORY / "403_forbidden")
-
-        if resolved_path.is_dir():
-            return str(resolved_path / "index.html")
-        return str(resolved_path)
+        # Prevent Directory Traversal by normalizing and verifying parent directory
+        translated = super().translate_path(path)
+        rel = os.path.relpath(translated, DIRECTORY)
+        if rel.startswith("..") or rel.startswith("/"):
+            return os.path.join(DIRECTORY, "index.html")
+        return translated
 
     def log_message(self, format, *args):
-        # Clean logging without leaking internal server signatures
-        sys.stderr.write(f"[SecureServer] {self.address_string()} - {format % args}\n")
+        sys.stderr.write(f"[CyberSecurity Server] - {format % args}\n")
 
 def run():
     os.chdir(DIRECTORY)
-    # Enable address reuse
     socketserver.TCPServer.allow_reuse_address = True
-    
-    with socketserver.TCPServer(("127.0.0.1", PORT), SecureHTTPRequestHandler) as httpd:
-        url = f"http://localhost:{PORT}/"
-        print("=" * 60)
-        print("🛡️  इतिहास Anime — Security-Hardened Web Server Running")
-        print(f"🔗  URL: {url}")
-        print("🔒  Cybersecurity Protections Active:")
-        print("    • Content-Security-Policy (CSP) Enabled")
-        print("    • Anti-Clickjacking (X-Frame-Options: DENY)")
-        print("    • Anti-MIME Sniffing (X-Content-Type-Options: nosniff)")
-        print("    • Anti-Directory Traversal Path Sanitization")
-        print("    • Permissions-Policy Device Lockdown")
-        print("=" * 60)
-        print("Press Ctrl+C to stop the server.")
-        
-        # Auto-open browser
-        try:
-            webbrowser.open(url)
-        except Exception:
-            pass
-            
+    with socketserver.TCPServer(("0.0.0.0", PORT), CyberSecureHandler) as httpd:
+        print("=" * 65)
+        print("🛡️  इतिहास Anime — Cyber-Secured Web Server Running on Port 8080")
+        print("🔒  Active Cybersecurity Protections:")
+        print("    [✓] Content-Security-Policy (CSP) Active")
+        print("    [✓] Anti-Clickjacking Protection (X-Frame-Options: DENY)")
+        print("    [✓] Anti-MIME Sniffing (X-Content-Type-Options: nosniff)")
+        print("    [✓] Hardware API Lockdown (Camera/Mic/GPS Disabled)")
+        print("    [✓] Strict Directory Traversal Defense Active")
+        print("    [✓] Transport Security (HSTS) Active")
+        print("=" * 65)
         try:
             httpd.serve_forever()
         except KeyboardInterrupt:

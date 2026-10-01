@@ -6,7 +6,7 @@
     <title>इतिहास Anime — Legends of Bharat Reimagined</title>
     
     <!-- Cybersecurity Hardening & OWASP Compliance -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self';">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self';">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
     <meta name="referrer" content="strict-origin-when-cross-origin">
@@ -20,7 +20,7 @@
 <body>
     <canvas id="particles"></canvas>
 
-    <!-- Decorative SVG Border Pattern -->
+    <!-- Decorative Top Border (Tricolor) -->
     <div class="deco-border-top"></div>
 
     <!-- Navigation -->
@@ -30,7 +30,6 @@
                 <svg width="36" height="36" viewBox="0 0 100 100" fill="none">
                     <circle cx="50" cy="50" r="45" stroke="#ff9933" stroke-width="3"/>
                     <circle cx="50" cy="50" r="35" stroke="#ff993366" stroke-width="1"/>
-                    <!-- Ashoka Chakra style spokes -->
                     <line x1="50" y1="10" x2="50" y2="90" stroke="#ff9933" stroke-width="1.5"/>
                     <line x1="10" y1="50" x2="90" y2="50" stroke="#ff9933" stroke-width="1.5"/>
                     <line x1="21" y1="21" x2="79" y2="79" stroke="#ff993388" stroke-width="1"/>
@@ -46,8 +45,10 @@
         <div class="nav-links" id="navLinks">
             <a href="#home" class="nav-link active">Home</a>
             <a href="#gallery" class="nav-link">Gallery</a>
-            <a href="#video" class="nav-link"><span class="nav-icon">🎬</span> Stories</a>
-            <a href="#generate" class="nav-link">Generate</a>
+            <a href="#tactics" class="nav-link"><span class="nav-icon">⚔️</span> Battles</a>
+            <a href="#video" class="nav-link"><span class="nav-icon">🎬</span> Video Stories</a>
+            <a href="#generate" class="nav-link"><span class="nav-icon">✨</span> AI Studio</a>
+            <a href="#timeline" class="nav-link">Timeline</a>
             <a href="#about" class="nav-link">About</a>
         </div>
         <button class="nav-toggle" id="navToggle" aria-label="Menu">
@@ -64,32 +65,34 @@
         </div>
         <div class="hero-inner">
             <div class="hero-content">
-                <div class="hero-badge"><span class="badge-dot"></span> Where History Meets Anime</div>
+                <div class="hero-badge"><span class="badge-dot"></span> 3,000 Years of Indian History × Anime Visual Storytelling</div>
                 <h1 class="hero-title">
                     <span class="t-line t1">Legends of</span>
                     <span class="t-line t2 gradient-text">भारत</span>
                     <span class="t-line t3">Reimagined</span>
                 </h1>
                 <p class="hero-desc">
-                    India's greatest warriors, kings, queens & strategists 
-                    — as stunning anime characters & cinematic stories 
-                    with historically accurate detail.
+                    Learn the true, breathtaking history of India's greatest warriors, gurus, and queens through 
+                    <strong>dynamic anime storytelling, tactical battle breakdowns, and interactive anime video cinema</strong>.
                 </p>
                 <div class="hero-actions">
                     <a href="#gallery" class="btn btn-primary">
-                        <span>Explore Gallery</span>
+                        <span>Explore 12 Legends</span>
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </a>
                     <a href="#video" class="btn btn-glass">
-                        <span>🎬 Watch Stories</span>
+                        <span>🎬 Watch Anime Cinema</span>
+                    </a>
+                    <a href="#tactics" class="btn btn-glass">
+                        <span>⚔️ Battle Strategies</span>
                     </a>
                 </div>
                 <div class="hero-stats">
-                    <div class="stat"><span class="stat-num" data-target="13">0</span><span class="stat-label">Characters</span></div>
+                    <div class="stat"><span class="stat-num" data-target="12">0</span><span class="stat-label">Unique Heroes</span></div>
                     <div class="stat-divider"></div>
                     <div class="stat"><span class="stat-num" data-target="3000">0</span><span class="stat-label">Years of History</span></div>
                     <div class="stat-divider"></div>
-                    <div class="stat"><span class="stat-num" data-target="7">0</span><span class="stat-label">Epic Stories</span></div>
+                    <div class="stat"><span class="stat-num" data-target="12">0</span><span class="stat-label">Anime Video Stories</span></div>
                 </div>
             </div>
             <div class="hero-visual">
@@ -97,13 +100,14 @@
                     <div class="frame-corner tl"></div><div class="frame-corner tr"></div>
                     <div class="frame-corner bl"></div><div class="frame-corner br"></div>
                     <div class="hero-carousel">
-                        <img src="images/chandragupta_maurya.jpg" alt="Chandragupta Maurya" class="carousel-img active">
-                        <img src="images/rani_lakshmibai.jpg" alt="Rani Lakshmibai" class="carousel-img">
+                        <img src="images/maharana_pratap.jpg" alt="Maharana Pratap" class="carousel-img active">
+                        <img src="images/chanakya.jpg" alt="Chanakya" class="carousel-img">
                         <img src="images/shivaji_maharaj.jpg" alt="Shivaji Maharaj" class="carousel-img">
-                        <img src="images/maharana_pratap.jpg" alt="Maharana Pratap" class="carousel-img">
+                        <img src="images/rani_lakshmibai.jpg" alt="Rani Lakshmibai" class="carousel-img">
                         <img src="images/bhagat_singh.jpg" alt="Bhagat Singh" class="carousel-img">
+                        <img src="images/ashoka_the_great.jpg" alt="Ashoka the Great" class="carousel-img">
                     </div>
-                    <div class="hero-carousel-name" id="heroCarouselName">Chandragupta Maurya</div>
+                    <div class="hero-carousel-name" id="heroCarouselName">Maharana Pratap & Chetak</div>
                 </div>
                 <div class="hero-glow"></div>
             </div>
@@ -120,11 +124,11 @@
         <div class="section-header">
             <div class="section-tag-wrap">
                 <div class="tag-line"></div>
-                <span class="section-tag">Character Gallery</span>
+                <span class="section-tag">Historical Characters</span>
                 <div class="tag-line"></div>
             </div>
-            <h2 class="section-title">The <span class="gradient-text">Legends</span></h2>
-            <p class="section-desc">Click any character to explore their story and watch their anime video</p>
+            <h2 class="section-title">The <span class="gradient-text">12 Legends</span></h2>
+            <p class="section-desc">Click any card to read their complete historical chronicle, battle stats & launch their anime video</p>
         </div>
 
         <div class="filter-bar">
@@ -132,43 +136,82 @@
                 <span class="filter-icon">🏛️</span> All Eras
             </button>
             <button class="filter-btn" data-filter="ancient">
-                <span class="filter-icon">🏺</span> Ancient
+                <span class="filter-icon">🏺</span> Ancient Bharat
             </button>
             <button class="filter-btn" data-filter="medieval">
-                <span class="filter-icon">⚔️</span> Medieval
+                <span class="filter-icon">⚔️</span> Medieval Legends
             </button>
             <button class="filter-btn" data-filter="modern">
-                <span class="filter-icon">🇮🇳</span> Modern
+                <span class="filter-icon">🇮🇳</span> Freedom Struggle
             </button>
         </div>
 
         <div class="gallery-grid" id="galleryGrid">
-            <!-- Cards injected by JS for clean code -->
+            <!-- Dynamically populated by JS -->
         </div>
     </section>
 
-    <!-- Character Modal -->
+    <!-- ===== INTERACTIVE CHARACTER MODAL WITH ANIME HISTORY CHRONICLES ===== -->
     <div class="modal" id="characterModal">
         <div class="modal-backdrop"></div>
         <div class="modal-content">
             <button class="modal-close" aria-label="Close">✕</button>
             <div class="modal-grid">
-                <div class="modal-image"><img id="modalImg" src="" alt=""></div>
+                <div class="modal-image">
+                    <img id="modalImg" src="" alt="">
+                    <div class="modal-img-badge" id="modalImgBadge">Honorable Hero</div>
+                </div>
                 <div class="modal-info">
                     <span class="modal-era" id="modalEra"></span>
                     <h2 class="modal-name" id="modalName"></h2>
                     <p class="modal-role" id="modalRole"></p>
                     <div class="modal-divider"><div class="divider-chakra">☸</div></div>
-                    <p class="modal-bio" id="modalBio"></p>
-                    <div class="modal-stats-grid" id="modalStats"></div>
-                    <blockquote class="modal-quote" id="modalQuote"></blockquote>
-                    <button class="btn btn-primary btn-watch" onclick="playStoryFromModal()">🎬 Watch Anime Story</button>
+                    
+                    <!-- Tab Selector for Deep History -->
+                    <div class="modal-tabs">
+                        <button class="modal-tab active" data-tab="story">📜 Historical Story</button>
+                        <button class="modal-tab" data-tab="stats">⚔️ Anime Battle Stats</button>
+                        <button class="modal-tab" data-tab="tactics">🧠 Key Strategy</button>
+                    </div>
+
+                    <div class="tab-pane active" id="tabStory">
+                        <p class="modal-bio" id="modalBio"></p>
+                        <blockquote class="modal-quote" id="modalQuote"></blockquote>
+                    </div>
+
+                    <div class="tab-pane" id="tabStats">
+                        <div class="anime-power-radar" id="modalRadar"></div>
+                        <div class="modal-stats-grid" id="modalStats"></div>
+                    </div>
+
+                    <div class="tab-pane" id="tabTactics">
+                        <div class="modal-tactics-box" id="modalTactics"></div>
+                    </div>
+
+                    <button class="btn btn-primary btn-watch" onclick="playStoryFromModal()">🎬 Watch Cinematic Anime Video</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- ===== VIDEO STORIES ===== -->
+    <!-- ===== TACTICAL BATTLES & ANIME HISTORICAL BREAKDOWN ===== -->
+    <section id="tactics" class="tactics-section">
+        <div class="section-header">
+            <div class="section-tag-wrap">
+                <div class="tag-line"></div>
+                <span class="section-tag">Tactics of Bharat</span>
+                <div class="tag-line"></div>
+            </div>
+            <h2 class="section-title">Masterful <span class="gradient-text">Battle Strategies</span></h2>
+            <p class="section-desc">Explore how India's greatest minds used brilliant tactical genius to protect Bharat</p>
+        </div>
+
+        <div class="tactics-container" id="tacticsContainer">
+            <!-- Injected by JS -->
+        </div>
+    </section>
+
+    <!-- ===== VIDEO STORIES & CINEMA PLAYER ===== -->
     <section id="video" class="video-section">
         <div class="section-header">
             <div class="section-tag-wrap">
@@ -177,7 +220,7 @@
                 <div class="tag-line"></div>
             </div>
             <h2 class="section-title">Watch History <span class="gradient-text">Come Alive</span></h2>
-            <p class="section-desc">Select a legendary character and watch their epic story unfold as a cinematic anime</p>
+            <p class="section-desc">Experience fully animated, chapter-by-chapter anime cinematics with historical narration & sound effects</p>
         </div>
 
         <div class="video-container">
@@ -203,79 +246,89 @@
             </div>
             <div class="cinema-letterbox bottom"></div>
             <div class="cinema-controls">
-                <button class="cinema-btn" id="cinemaPlayPause">⏸️</button>
+                <button class="cinema-btn" id="cinemaPlayPause" title="Play/Pause">⏸️</button>
                 <div class="cinema-progress"><div class="cinema-progress-bar" id="cinemaProgressBar"></div><div class="cinema-chapter-dots" id="cinemaChapterDots"></div></div>
                 <span class="cinema-time" id="cinemaTime">00:00</span>
-                <button class="cinema-btn" id="cinemaFullscreen">⛶</button>
-                <button class="cinema-btn" id="cinemaClose">✕</button>
+                <button class="cinema-btn" id="cinemaFullscreen" title="Fullscreen">⛶</button>
+                <button class="cinema-btn" id="cinemaClose" title="Exit Cinema">✕</button>
             </div>
         </div>
     </section>
 
-    <!-- ===== GENERATE ===== -->
+    <!-- ===== AI ANIME STUDIO & VIDEO GENERATOR ===== -->
     <section id="generate" class="generate">
         <div class="section-header">
             <div class="section-tag-wrap">
                 <div class="tag-line"></div>
-                <span class="section-tag">AI Character Generator</span>
+                <span class="section-tag">AI Anime & Video Studio</span>
                 <div class="tag-line"></div>
             </div>
-            <h2 class="section-title">Create Your <span class="gradient-text">Character</span></h2>
-            <p class="section-desc">Choose an Indian historical figure and watch them transform into anime</p>
+            <h2 class="section-title">Anime Video <span class="gradient-text">Generator Studio</span></h2>
+            <p class="section-desc">Generate custom anime portraits & trigger full cinematic video scenes for any historical personality</p>
         </div>
         <div class="generator-container">
             <div class="generator-form">
                 <div class="form-group">
-                    <label class="form-label">Select Historical Figure</label>
+                    <label class="form-label">1. Choose Historical Personality</label>
                     <div class="character-select" id="characterSelect"></div>
                 </div>
                 <div class="form-group">
-                    <label class="form-label">Anime Style</label>
+                    <label class="form-label">2. Animation Studio Style</label>
                     <div class="style-select">
-                        <button class="style-btn active" data-style="shonen">🗡️ Shōnen</button>
-                        <button class="style-btn" data-style="seinen">🎭 Seinen</button>
-                        <button class="style-btn" data-style="historical">📜 Historical</button>
-                        <button class="style-btn" data-style="chibi">🌸 Chibi</button>
+                        <button class="style-btn active" data-style="ufotable">🔥 High-Octane Action (Ufotable)</button>
+                        <button class="style-btn" data-style="ghibli">🌸 Scenic Heritage (Ghibli)</button>
+                        <button class="style-btn" data-style="mappa">⚔️ Intense Heroic Drama (MAPPA)</button>
+                        <button class="style-btn" data-style="classic">📜 Classic 90s Epic (Sunrise)</button>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-label">Scene Setting</label>
+                    <label class="form-label">3. Historical Scene Setting</label>
                     <div class="style-select">
-                        <button class="scene-btn active" data-scene="battlefield">⚔️ Battlefield</button>
-                        <button class="scene-btn" data-scene="throne">🏛️ Throne Room</button>
-                        <button class="scene-btn" data-scene="nature">🌿 Nature</button>
-                        <button class="scene-btn" data-scene="dramatic">🌅 Dramatic</button>
+                        <button class="scene-btn active" data-scene="battlefield">⚔️ Famous Battlefield</button>
+                        <button class="scene-btn" data-scene="throne">🏛️ Royal Court & Gurukul</button>
+                        <button class="scene-btn" data-scene="nature">🌿 Sahyadris & Forest Fortress</button>
+                        <button class="scene-btn" data-scene="freedom">🇮🇳 Freedom Struggle March</button>
                     </div>
                 </div>
-                <button class="btn btn-generate" id="generateBtn">
-                    <span class="btn-text">✨ Generate Anime Character</span>
-                    <span class="btn-loading" style="display:none;"><span class="spinner"></span> Generating...</span>
-                </button>
+                <div class="generator-actions-row">
+                    <button class="btn btn-generate" id="generateBtn">
+                        <span class="btn-text">✨ Generate Anime Character</span>
+                        <span class="btn-loading" style="display:none;"><span class="spinner"></span> Rendering Anime...</span>
+                    </button>
+                    <button class="btn btn-video-gen" id="generateVideoBtn">
+                        <span class="btn-text">🎬 Generate & Play Anime Video</span>
+                    </button>
+                </div>
             </div>
             <div class="generator-preview" id="generatorPreview">
                 <div class="preview-placeholder">
                     <div class="placeholder-icon">🎨</div>
-                    <p>Select a character and click<br>Generate to see the magic!</p>
+                    <p>Select any personality and click<br><strong>Generate Anime</strong> or <strong>Generate Video</strong>!</p>
                 </div>
                 <div class="preview-result" style="display:none;">
                     <img id="previewImg" src="" alt="">
-                    <div class="preview-info"><h3 id="previewName"></h3><p id="previewDesc"></p></div>
+                    <div class="preview-info">
+                        <h3 id="previewName"></h3>
+                        <p id="previewDesc"></p>
+                        <button class="btn btn-primary btn-preview-play" id="previewPlayBtn" style="margin-top: 10px;">▶ Watch This Video Story</button>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ===== TIMELINE ===== -->
-    <section class="timeline-section">
+    <section id="timeline" class="timeline-section">
         <div class="section-header">
             <div class="section-tag-wrap">
                 <div class="tag-line"></div>
-                <span class="section-tag">Historical Timeline</span>
+                <span class="section-tag">Historical Chronology</span>
                 <div class="tag-line"></div>
             </div>
-            <h2 class="section-title">Journey Through <span class="gradient-text">Time</span></h2>
+            <h2 class="section-title">Journey Through <span class="gradient-text">Time (375 BCE – 1947 CE)</span></h2>
+            <p class="section-desc">Follow the chronological timeline of key events that defined the destiny of Bharat</p>
         </div>
-        <div class="timeline" id="timeline"></div>
+        <div class="timeline" id="timelineList"></div>
     </section>
 
     <!-- ===== ABOUT ===== -->
@@ -283,25 +336,25 @@
         <div class="about-content">
             <div class="about-text">
                 <div class="section-tag-wrap left">
-                    <span class="section-tag">About This Project</span>
+                    <span class="section-tag">Educational Vision</span>
                     <div class="tag-line"></div>
                 </div>
-                <h2 class="section-title">Honouring Our <span class="gradient-text">Heritage</span></h2>
-                <p><strong>इतिहास Anime</strong> reimagines the greatest figures from Indian history as anime characters — with deep respect for historical accuracy. Every character is portrayed as the <strong>noble hero</strong> they truly were.</p>
-                <p>Our mission is to make Indian history exciting and accessible, blending the visual appeal of anime with the richness of Bharatiya Itihaas.</p>
+                <h2 class="section-title">Learning History with <span class="gradient-text">Anime Artistry</span></h2>
+                <p><strong>इतिहास Anime</strong> is built on a simple, powerful belief: Indian history is filled with the most thrilling, inspiring, and noble personalities in world history. By combining <strong>rigorous historical research</strong> with <strong>stunning anime artistry and video storytelling</strong>, we make history vivid, captivating, and memorable for everyone.</p>
+                
                 <div class="about-features">
-                    <div class="feature"><span class="feature-icon">🎯</span><div><h4>Historically Accurate</h4><p>Every detail researched from historical sources</p></div></div>
-                    <div class="feature"><span class="feature-icon">🎬</span><div><h4>Cinematic Stories</h4><p>Watch animated anime videos of each character's history</p></div></div>
-                    <div class="feature"><span class="feature-icon">🙏</span><div><h4>Respectful Portrayal</h4><p>Every great personality shown with honour and dignity</p></div></div>
-                    <div class="feature"><span class="feature-icon">🎨</span><div><h4>13 Unique Characters</h4><p>Each character has their own distinct look and identity</p></div></div>
+                    <div class="feature"><span class="feature-icon">👑</span><div><h4>Heroic & Dignified Portrayal</h4><p>Every historic leader is presented with supreme honor and authenticity—never demonic or distorted.</p></div></div>
+                    <div class="feature"><span class="feature-icon">🎬</span><div><h4>Cinematic Video Generator</h4><p>Chapter-based animated storytelling with typing narrations, camera effects, and audio synthesis.</p></div></div>
+                    <div class="feature"><span class="feature-icon">🧠</span><div><h4>Tactical Strategy Breakdowns</h4><p>Understand real battlefield maneuvers: guerrilla warfare, rocket artillery, and sound-based archery.</p></div></div>
+                    <div class="feature"><span class="feature-icon">🛡️</span><div><h4>Cybersecurity Hardened</h4><p>OWASP Level 3 protection, CSP, and encrypted HTTPS links for safe global sharing.</p></div></div>
                 </div>
             </div>
             <div class="about-visual">
                 <div class="mosaic">
-                    <img src="images/chanakya.jpg" alt="" class="mosaic-img m1">
-                    <img src="images/shivaji_maharaj.jpg" alt="" class="mosaic-img m2">
-                    <img src="images/rani_padmini.jpg" alt="" class="mosaic-img m3">
-                    <img src="images/maharana_pratap.jpg" alt="" class="mosaic-img m4">
+                    <img src="images/maharana_pratap.jpg" alt="Maharana Pratap" class="mosaic-img m1">
+                    <img src="images/shivaji_maharaj.jpg" alt="Shivaji Maharaj" class="mosaic-img m2">
+                    <img src="images/rani_padmini.jpg" alt="Rani Padmini" class="mosaic-img m3">
+                    <img src="images/bhagat_singh.jpg" alt="Bhagat Singh" class="mosaic-img m4">
                 </div>
             </div>
         </div>
@@ -314,16 +367,17 @@
             <div class="footer-brand">
                 <span class="brand-hindi" style="font-size:24px">इतिहास</span>
                 <span class="brand-eng" style="font-size:11px">ANIME</span>
-                <p>Bridging ancient glory with modern art</p>
+                <p>Bridging ancient glory with modern art • Made for Bharat</p>
             </div>
             <div class="footer-center">
-                <p>Made with ❤️ for Indian History</p>
-                <p class="footer-sub">All characters are AI-generated artistic interpretations portrayed with respect 🙏</p>
+                <p>Empowering millions to discover history through anime creativity ❤️</p>
+                <p class="footer-sub">All personalities portrayed with deepest historical reverence & dignity 🙏</p>
             </div>
             <div class="footer-links">
                 <a href="#gallery">Gallery</a>
+                <a href="#tactics">Battles</a>
                 <a href="#video">Stories</a>
-                <a href="#generate">Generate</a>
+                <a href="#generate">AI Studio</a>
             </div>
         </div>
     </footer>

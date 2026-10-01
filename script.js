@@ -1,10 +1,10 @@
 // ===================================================================
-// इतिहास Anime — Full Interactive Engine
-// Indian History × Anime: 12 Legendary Characters, Cinematic Video Player & Generator
+// इतिहास Anime — Full Interactive Engine & Educational Lore
+// Indian History × Anime: 12 Legendary Characters, Tactical Battles, Video Stories & Generator
 // ===================================================================
 
-// ===== 1. COMPREHENSIVE CHARACTER DATABASE =====
-const allCharacters = [
+// ===== 1. COMPREHENSIVE CHARACTER DATABASE WITH ANIME STATS & TACTICS =====
+const allCharacters = Object.freeze([
     {
         id: 'chandragupta',
         name: 'Chandragupta Maurya',
@@ -13,7 +13,18 @@ const allCharacters = [
         eraText: '340–298 BCE',
         image: 'images/chandragupta_maurya.jpg',
         tags: ['Warrior', 'Emperor', 'Unifier'],
-        bio: 'Chandragupta Maurya founded the Maurya Empire, uniting most of the Indian subcontinent under a single sovereign rule for the first time in history. Mentored by Chanakya, he overthrew the corrupt Nanda dynasty and repelled the Greek forces of Seleucus Nicator.',
+        powerStats: [
+            { label: 'Leadership', val: 98 },
+            { label: 'Tactics', val: 95 },
+            { label: 'Martial Skill', val: 92 },
+            { label: 'Wisdom', val: 88 },
+            { label: 'Dharma', val: 90 }
+        ],
+        tacticsSummary: {
+            title: 'Unified Continental Vanguard',
+            desc: 'Under Chanakya’s guidance, Chandragupta combined rapid cavalry flanking with psychological diplomacy, surrounding the imperial Nanda forces before liberating western frontiers from Greek generals.'
+        },
+        bio: 'Chandragupta Maurya rose from humble origins under the tutelage of Chanakya to unite ancient Bharat into the Maurya Empire. He liberated northwest India from Macedonian satraps and established a prosperous, unified realm with Pataliputra as its jewel.',
         stats: [
             { label: 'Dynasty', value: 'Maurya' },
             { label: 'Capital', value: 'Pataliputra' },
@@ -32,7 +43,18 @@ const allCharacters = [
         eraText: '375–283 BCE',
         image: 'images/chanakya.jpg',
         tags: ['Philosopher', 'Strategist', 'Guru'],
-        bio: 'Chanakya, also known as Vishnugupta and Kautilya, was an ancient Brahmin scholar and royal advisor at Takshashila University. Living with austere simplicity—shaved head and sacred shikha—he authored the pioneering Arthashastra on politics, economics, and military strategy.',
+        powerStats: [
+            { label: 'Strategy', val: 100 },
+            { label: 'Wisdom', val: 100 },
+            { label: 'Statecraft', val: 99 },
+            { label: 'Espionage', val: 96 },
+            { label: 'Willpower', val: 98 }
+        ],
+        tacticsSummary: {
+            title: 'Saptanga Theory & Mandala Doctrine',
+            desc: 'Authored the Arthashastra detailing the 7 limbs of sovereignty and concentric ring diplomacy. Used deep intelligence networks, economic stabilization, and austere discipline to outmaneuver all adversaries.'
+        },
+        bio: 'Chanakya was an ancient Brahmin scholar and economist at Takshashila University. Living with austere simplicity—shaved head, rudraksha mala, and sacred shikha—he authored the pioneering Arthashastra on politics, economics, and warfare nearly 2,000 years before Western political theorists.',
         stats: [
             { label: 'Institution', value: 'Takshashila' },
             { label: 'Masterpiece', value: 'Arthashastra' },
@@ -51,6 +73,17 @@ const allCharacters = [
         eraText: '304–232 BCE',
         image: 'images/ashoka_the_great.jpg',
         tags: ['Emperor', 'Buddhist', 'Dharma'],
+        powerStats: [
+            { label: 'Dharma', val: 100 },
+            { label: 'Compassion', val: 98 },
+            { label: 'Empire Size', val: 99 },
+            { label: 'Diplomacy', val: 94 },
+            { label: 'Morality', val: 97 }
+        ],
+        tacticsSummary: {
+            title: 'Dharma-Vijaya (Conquest by Righteousness)',
+            desc: 'Replaced military aggression (Digvijaya) with moral diplomacy, building hospitals for humans and animals, planting roadside fruit groves, and dispatching peace emissaries to Greece, Egypt, and Sri Lanka.'
+        },
         bio: 'Grandson of Chandragupta, Emperor Ashoka ruled the vast Mauryan empire. Profoundly moved by the sorrow of the Kalinga War, he renounced violence, embraced Buddhism, and championed peace, animal welfare, and moral governance. The Ashoka Chakra shines upon the Indian National Flag today.',
         stats: [
             { label: 'Dynasty', value: 'Maurya' },
@@ -70,6 +103,17 @@ const allCharacters = [
         eraText: '1166–1192 CE',
         image: 'images/prithviraj_chauhan.jpg',
         tags: ['Rajput', 'Master Archer', 'King'],
+        powerStats: [
+            { label: 'Archery', val: 100 },
+            { label: 'Courage', val: 96 },
+            { label: 'Honor', val: 98 },
+            { label: 'Swordsmanship', val: 93 },
+            { label: 'Chivalry', val: 95 }
+        ],
+        tacticsSummary: {
+            title: 'Acoustic Triangulation (Shabdbhedi Baan)',
+            desc: 'Mastered the ancient martial science of hitting moving targets purely through sonic resonance and poetic coordinates provided by court poet Chand Bardai.'
+        },
         bio: 'Prithviraj III reigned over Ajmer and Delhi with extraordinary courage and chivalry. Renowned for mastering the legendary art of Shabdbhedi Baan (striking accurately by sound alone), he triumphed over invading armies at the First Battle of Tarain in 1191.',
         stats: [
             { label: 'Dynasty', value: 'Chahamana' },
@@ -89,6 +133,17 @@ const allCharacters = [
         eraText: '1540–1597 CE',
         image: 'images/maharana_pratap.jpg',
         tags: ['Rajput', 'Defender', 'Chetak'],
+        powerStats: [
+            { label: 'Valor', val: 100 },
+            { label: 'Endurance', val: 99 },
+            { label: 'Honor', val: 100 },
+            { label: 'Horsemanship', val: 97 },
+            { label: 'Spear Mastery', val: 95 }
+        ],
+        tacticsSummary: {
+            title: 'Aravalli Defile Ambush & Cavalry Breakout',
+            desc: 'Utilized the narrow, rocky pass of Haldighati where imperial heavy cavalry could not maneuver. Partnered with the indigenous Bhil archers to maintain a relentless defense of Mewar.'
+        },
         bio: 'Maharana Pratap was the beloved Rajput monarch of Mewar who fiercely stood for independence and honour. Leading his people in the legendary Battle of Haldighati (1576), he and his loyal warhorse Chetak embodied unbreakable spirit and chivalry.',
         stats: [
             { label: 'Dynasty', value: 'Sisodia (Mewar)' },
@@ -108,6 +163,17 @@ const allCharacters = [
         eraText: '13th–14th Century CE',
         image: 'images/rani_padmini.jpg',
         tags: ['Queen', 'Chittorgarh', 'Sacrifice'],
+        powerStats: [
+            { label: 'Dignity', val: 100 },
+            { label: 'Fortitude', val: 98 },
+            { label: 'Intellect', val: 94 },
+            { label: 'Grace', val: 99 },
+            { label: 'Leadership', val: 95 }
+        ],
+        tacticsSummary: {
+            title: 'Moral Sanctity & Fort Resilience',
+            desc: 'Rallied the women of Chittorgarh with unyielding moral resolve, inspiring the defenders to hold out against overwhelming siege armies while preserving sovereign honor.'
+        },
         bio: 'Rani Padmini was celebrated across Bharat for her radiant grace, intellect, and steadfast devotion to righteousness. When Chittorgarh faced overwhelming siege, she led the women of Chittor in supreme valor and dignity to safeguard their sanctity.',
         stats: [
             { label: 'Kingdom', value: 'Chittorgarh' },
@@ -127,6 +193,17 @@ const allCharacters = [
         eraText: '1524–1564 CE',
         image: 'images/rani_durgavati.jpg',
         tags: ['Gondwana', 'Leader', 'Warrior'],
+        powerStats: [
+            { label: 'Martial Valor', val: 96 },
+            { label: 'Elephant Command', val: 98 },
+            { label: 'Administration', val: 94 },
+            { label: 'Courage', val: 99 },
+            { label: 'Tactics', val: 91 }
+        ],
+        tacticsSummary: {
+            title: 'River Defile Defense (Battle of Narrai)',
+            desc: 'Positioned her forces between the Gaur and Narmada rivers flanked by hilly ridges, nullifying the numeric advantage of imperial forces through concentrated elephant counter-attacks.'
+        },
         bio: 'Rani Durgavati was the fearless ruler of Gondwana who transformed her kingdom into a bastion of prosperity, cultural harmony, and military prowess. Riding her majestic war elephant Sarman, she valiantly defended her homeland against imperial forces.',
         stats: [
             { label: 'Kingdom', value: 'Garha-Gondwana' },
@@ -146,6 +223,17 @@ const allCharacters = [
         eraText: '1630–1680 CE',
         image: 'images/shivaji_maharaj.jpg',
         tags: ['Maratha', 'Naval Pioneer', 'Sovereign'],
+        powerStats: [
+            { label: 'Guerrilla Tactics', val: 100 },
+            { label: 'Naval Vision', val: 97 },
+            { label: 'Leadership', val: 99 },
+            { label: 'Fort Architecture', val: 98 },
+            { label: 'Justice', val: 99 }
+        ],
+        tacticsSummary: {
+            title: 'Ganimi Kava (Lightning Guerrilla Warfare)',
+            desc: 'Invented rapid-strike mountain warfare leveraging hill forts (Raigad, Pratapgad, Sinhagad), swift light cavalry, psychological warfare, and constructed India’s first indigenous blue-water navy.'
+        },
         bio: 'Chhatrapati Shivaji Maharaj founded the Maratha Empire through visionary leadership, swift guerrilla warfare (Ganimi Kava), and just civil governance. He established modern naval defense, protected all religions, and revived native administration under Hindavi Swarajya.',
         stats: [
             { label: 'Empire', value: 'Maratha' },
@@ -165,6 +253,17 @@ const allCharacters = [
         eraText: '1751–1799 CE',
         image: 'images/tipu_sultan.jpg',
         tags: ['Mysore', 'Rocket Pioneer', 'Defender'],
+        powerStats: [
+            { label: 'Rocket Engineering', val: 100 },
+            { label: 'Artillery', val: 96 },
+            { label: 'Bravery', val: 95 },
+            { label: 'Innovation', val: 94 },
+            { label: 'Fortification', val: 92 }
+        ],
+        tacticsSummary: {
+            title: 'Cushoon Iron-Tube Rocket Barrage',
+            desc: 'Developed iron-cased ballistic rockets attached to sharp bamboo blades with ranges over 1 km, deployed in specialized rocket brigades (Cushoons) against enemy cavalry formations.'
+        },
         bio: 'Tipu Sultan ruled Mysore as a scholarly innovator and military commander. Renowned for advancing iron-cased Mysorean rockets against colonial armies, he fortified Srirangapatna and resisted foreign expansionism with relentless determination.',
         stats: [
             { label: 'Kingdom', value: 'Mysore' },
@@ -184,6 +283,17 @@ const allCharacters = [
         eraText: '1828–1858 CE',
         image: 'images/rani_lakshmibai.jpg',
         tags: ['Freedom', '1857 Revolt', 'Warrior'],
+        powerStats: [
+            { label: 'Fearlessness', val: 100 },
+            { label: 'Horsemanship', val: 98 },
+            { label: 'Dual Swordcraft', val: 95 },
+            { label: 'Inspiring Morale', val: 99 },
+            { label: 'Patriotism', val: 100 }
+        ],
+        tacticsSummary: {
+            title: 'Fortress Escalation & Mounted Saber Charges',
+            desc: 'Trained a dedicated female artillery and cavalry regiment (Durga Dal), executed an audacious equestrian leap from Jhansi ramparts, and led swift counter-attacks at Kalpi and Gwalior.'
+        },
         bio: 'Rani Lakshmibai was one of the foremost leaders of the 1857 First War of Indian Independence. Defending Jhansi with her son Damodar Rao strapped to her back, her extraordinary courage drew unanimous respect from allies and foes alike.',
         stats: [
             { label: 'Kingdom', value: 'Jhansi' },
@@ -203,6 +313,17 @@ const allCharacters = [
         eraText: '1907–1931 CE',
         image: 'images/bhagat_singh.jpg',
         tags: ['Revolutionary', 'Patriot', 'Inquilab'],
+        powerStats: [
+            { label: 'Ideology & Intellect', val: 100 },
+            { label: 'Sacrifice', val: 100 },
+            { label: 'Charisma', val: 98 },
+            { label: 'Courage', val: 100 },
+            { label: 'Eloquence', val: 97 }
+        ],
+        tacticsSummary: {
+            title: 'Propaganda of the Deed & Courtroom Platform',
+            desc: 'Utilized non-lethal Assembly demonstrations and the colonial courtroom trials to broadcast the message of complete socialist independence across newspaper front pages worldwide.'
+        },
         bio: 'Bhagat Singh was a passionate intellectual, writer, and freedom fighter whose supreme sacrifice at the age of 23 ignited India’s struggle for complete independence. His slogan "Inquilab Zindabad" resonated across the hearts of millions.',
         stats: [
             { label: 'Movement', value: 'HSRA' },
@@ -222,6 +343,17 @@ const allCharacters = [
         eraText: '1897–1945 CE',
         image: 'images/subhas_chandra_bose.jpg',
         tags: ['Netaji', 'INA', 'Jai Hind'],
+        powerStats: [
+            { label: 'Military Leadership', val: 100 },
+            { label: 'Oratory & Rallying', val: 100 },
+            { label: 'Geopolitical Vision', val: 97 },
+            { label: 'Audacity', val: 99 },
+            { label: 'Dedication', val: 100 }
+        ],
+        tacticsSummary: {
+            title: 'International Military Alliance & INA Jungle Campaign',
+            desc: 'Mobilized tens of thousands of Indian soldiers in Southeast Asia, formed the revolutionary Azad Hind provisional government, and launched the daring offensive through the jungles of Burma into Manipur and Nagaland.'
+        },
         bio: 'Netaji Subhas Chandra Bose was the charismatic leader who formed the Azad Hind Fauj (Indian National Army) to liberate India by storm. His rallying cries "Jai Hind" and "Give me blood, and I will give you freedom!" inspired millions to rise for self-determination.',
         stats: [
             { label: 'Army', value: 'Azad Hind Fauj (INA)' },
@@ -233,10 +365,62 @@ const allCharacters = [
         videoTitle: 'The March of Azad Hind',
         videoDuration: '⏱️ 2:45 min'
     }
-];
+]);
 
-// ===== 2. CINEMATIC VIDEO SCRIPTS =====
-const videoStoryScripts = {
+// ===== 2. TACTICAL BATTLE CRUCIBLES DATA =====
+const tacticalBattles = Object.freeze([
+    {
+        title: "Chanakya's Mandala Spy Network",
+        year: '320 BCE',
+        commander: 'Acharya Chanakya & Chandragupta',
+        desc: 'Before marching directly against the immense imperial army of the Nandas, Chanakya deployed deep espionage cells (Sansthas & Sancharas), cutting supply lines and forming strategic alliances across the border kingdoms.',
+        animeBreakdown: 'Anime Tactical Style: Multi-layered chess-board strategy. Every move calculated 10 steps ahead.',
+        charId: 'chanakya'
+    },
+    {
+        title: "The Narrow Defile of Haldighati",
+        year: '1576 CE',
+        commander: 'Maharana Pratap & Warhorse Chetak',
+        desc: 'Pratap chose the narrow mountain pass of Haldighati where the vast enemy force was funneled into a bottleneck. Armed with his 81kg spear, Pratap charged directly at the command center on Chetak.',
+        animeBreakdown: 'Anime Battle Style: High-octane clash of wills with Chetak executing impossible aerial maneuvers.',
+        charId: 'maharana_pratap'
+    },
+    {
+        title: "Ganimi Kava: The Pratapgad Ambush",
+        year: '1659 CE',
+        commander: 'Chhatrapati Shivaji Maharaj',
+        desc: 'Shivaji lured the colossal Bijapuri army into the dense, steep forests of Jawali near Pratapgad fort, completely nullifying heavy siege cannons and executing an ambush with concealed infantry.',
+        animeBreakdown: 'Anime Tactical Style: Shadow-speed jungle combat and impenetrable hill fort fortification.',
+        charId: 'shivaji'
+    },
+    {
+        title: "Acoustic Target Strike (Tarain)",
+        year: '1192 CE',
+        commander: 'Prithviraj Chauhan',
+        desc: 'Deprived of sight, Prithviraj relied on the acoustic coordinates chanted in verse by Chand Bardai to calculate distance, height, and angle, releasing a fatal arrow guided solely by sound.',
+        animeBreakdown: 'Anime Tactical Style: Time slowdown, auditory particle tracking, and pinpoint trajectory release.',
+        charId: 'prithviraj'
+    },
+    {
+        title: "Rampart Leap & Durga Dal Cavalry",
+        year: '1858 CE',
+        commander: 'Rani Lakshmibai of Jhansi',
+        desc: 'Surrounded within the besieged fort of Jhansi, the Queen led her cavalry through the gates and made a legendary leap over the high battlements with her infant son safely strapped to her armor.',
+        animeBreakdown: 'Anime Tactical Style: Electric saber charges, fearless equestrian acrobatics & motherly protection.',
+        charId: 'lakshmibai'
+    },
+    {
+        title: "The Battle of Narrai Forest",
+        year: '1564 CE',
+        commander: 'Rani Durgavati of Gondwana',
+        desc: 'Leading from the howdah of her royal war elephant Sarman, Rani Durgavati routed advance imperial divisions using the natural river barriers and coordinated archery from the tree canopies.',
+        animeBreakdown: 'Anime Tactical Style: Colossal elephant charges through mist-covered ancient forests.',
+        charId: 'rani_durgavati'
+    }
+]);
+
+// ===== 3. CINEMATIC VIDEO SCRIPTS =====
+const videoStoryScripts = Object.freeze({
     chandragupta: {
         title: 'Chandragupta Maurya',
         subtitle: 'The Rise of an Empire',
@@ -441,10 +625,10 @@ const videoStoryScripts = {
             { type: 'credit', duration: 4000 }
         ]
     }
-};
+});
 
-// ===== 3. TIMELINE DATA =====
-const timelineEvents = [
+// ===== 4. TIMELINE EVENTS DATA =====
+const timelineEvents = Object.freeze([
     { year: '375 BCE', title: 'Chanakya at Takshashila', desc: 'The master strategist authors the Arthashastra and trains young Chandragupta to unite Bharat.' },
     { year: '340 BCE', title: 'Rise of Chandragupta Maurya', desc: 'Under Chanakya’s guidance, Chandragupta founds the Maurya Empire and repels Greek armies.' },
     { year: '261 BCE', title: 'Ashoka & The Turn to Peace', desc: 'Following the Kalinga war, Emperor Ashoka establishes Ahimsa, Buddhist diplomacy, and rock edicts.' },
@@ -457,9 +641,9 @@ const timelineEvents = [
     { year: '1858 CE', title: 'Rani Lakshmibai’s Freedom Ride', desc: 'The warrior queen of Jhansi leads the 1857 war of independence, becoming an immortal icon.' },
     { year: '1931 CE', title: 'Bhagat Singh’s Supreme Sacrifice', desc: 'Shaheed Bhagat Singh’s martyrdom at age 23 electrifies the freedom struggle with "Inquilab Zindabad".' },
     { year: '1943 CE', title: 'Netaji & The Azad Hind Fauj', desc: 'Netaji establishes the Provisional Government of Free India and rallies the nation with "Jai Hind".' }
-];
+]);
 
-// ===== 4. DOM INJECTION & SETUP =====
+// ===== 5. DOM INJECTION FUNCTIONS =====
 
 function populateGallery() {
     const grid = document.getElementById('galleryGrid');
@@ -470,7 +654,7 @@ function populateGallery() {
                 <img src="${char.image}" alt="${char.name}" loading="lazy">
                 <div class="card-overlay">
                     <span class="card-era-badge">${char.eraText}</span>
-                    <span class="card-play-hint">🎬 Click for Bio & Video</span>
+                    <span class="card-play-hint">🎬 Bio & Video</span>
                 </div>
             </div>
             <div class="card-body">
@@ -479,6 +663,30 @@ function populateGallery() {
                 <div class="card-tags">
                     ${char.tags.map(t => `<span class="tag">${t}</span>`).join('')}
                 </div>
+            </div>
+        </div>
+    `).join('');
+}
+
+function populateTactics() {
+    const container = document.getElementById('tacticsContainer');
+    if (!container) return;
+    container.innerHTML = tacticalBattles.map(t => `
+        <div class="tactic-card">
+            <div class="tactic-header">
+                <span class="tactic-year">${t.year}</span>
+                <span class="tactic-commander">${t.commander}</span>
+            </div>
+            <div class="tactic-body">
+                <h3 class="tactic-title">${t.title}</h3>
+                <p class="tactic-desc">${t.desc}</p>
+                <div class="tactic-anime-breakdown">
+                    <span class="tactic-anime-tag">⚔️ Anime Tactical Choreography</span>
+                    <p class="tactic-anime-text">${t.animeBreakdown}</p>
+                </div>
+                <button class="tactic-btn" onclick="startCinema('${t.charId}')">
+                    <span>🎬 Watch This Battle Scene</span>
+                </button>
             </div>
         </div>
     `).join('');
@@ -511,7 +719,7 @@ function populateGenerator() {
 }
 
 function populateTimeline() {
-    const container = document.getElementById('timeline');
+    const container = document.getElementById('timelineList');
     if (!container) return;
     container.innerHTML = timelineEvents.map(evt => `
         <div class="timeline-item">
@@ -525,7 +733,7 @@ function populateTimeline() {
     `).join('');
 }
 
-// ===== 5. AUDIO SYNTHESIS (Offline Web Audio) =====
+// ===== 6. WEB AUDIO EFFECTS =====
 let audioCtx = null;
 function getAudioCtx() {
     if (!audioCtx) {
@@ -573,7 +781,7 @@ function playTypeClick() {
     } catch (e) {}
 }
 
-// ===== 6. PARTICLES BACKGROUND =====
+// ===== 7. PARTICLES BACKGROUND =====
 function initParticles() {
     const canvas = document.getElementById('particles');
     if (!canvas) return;
@@ -619,7 +827,7 @@ function initParticles() {
     animate();
 }
 
-// ===== 7. NAVBAR & SCROLL BEHAVIOR =====
+// ===== 8. NAVBAR & HERO CAROUSEL =====
 function initNavbar() {
     const navbar = document.querySelector('.navbar');
     const navToggle = document.getElementById('navToggle');
@@ -660,18 +868,18 @@ function initNavbar() {
     });
 }
 
-// ===== 8. HERO CAROUSEL =====
 function initHeroCarousel() {
     const images = document.querySelectorAll('.carousel-img');
     const nameEl = document.getElementById('heroCarouselName');
     if (!images.length) return;
 
     const names = [
-        'Chandragupta Maurya',
-        'Rani Lakshmibai',
+        'Maharana Pratap & Chetak',
+        'Acharya Chanakya',
         'Chhatrapati Shivaji Maharaj',
-        'Maharana Pratap',
-        'Shaheed Bhagat Singh'
+        'Rani Lakshmibai of Jhansi',
+        'Shaheed Bhagat Singh',
+        'Emperor Ashoka the Great'
     ];
 
     let current = 0;
@@ -718,7 +926,7 @@ function initCounters() {
     stats.forEach(s => obs.observe(s));
 }
 
-// ===== 10. GALLERY FILTER & MODAL =====
+// ===== 10. GALLERY FILTER & MODAL TABS =====
 let currentModalCharacter = null;
 
 function initGallery() {
@@ -758,16 +966,58 @@ function initGallery() {
         document.getElementById('modalName').textContent = char.name;
         document.getElementById('modalRole').textContent = char.role;
         document.getElementById('modalBio').textContent = char.bio;
+        document.getElementById('modalQuote').textContent = char.quote;
+
+        // Populate Power Radar Bars
+        const radarEl = document.getElementById('modalRadar');
+        if (radarEl && char.powerStats) {
+            radarEl.innerHTML = char.powerStats.map(st => `
+                <div class="radar-item">
+                    <span class="radar-label">${st.label}</span>
+                    <div class="radar-bar"><div class="radar-fill" style="width:${st.val}%"></div></div>
+                    <span class="radar-val">${st.val}</span>
+                </div>
+            `).join('');
+        }
+
+        // Stats grid
         document.getElementById('modalStats').innerHTML = char.stats.map(s => `
             <div class="modal-stat">
                 <span class="modal-stat-label">${s.label}</span>
                 <span class="modal-stat-value">${s.value}</span>
             </div>
         `).join('');
-        document.getElementById('modalQuote').textContent = char.quote;
+
+        // Tactics box
+        const tacticsBox = document.getElementById('modalTactics');
+        if (tacticsBox && char.tacticsSummary) {
+            tacticsBox.innerHTML = `
+                <h4>🧠 ${char.tacticsSummary.title}</h4>
+                <p>${char.tacticsSummary.desc}</p>
+            `;
+        }
+
+        // Reset tabs to story
+        document.querySelectorAll('.modal-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+        document.querySelector('.modal-tab[data-tab="story"]').classList.add('active');
+        document.getElementById('tabStory').classList.add('active');
 
         modal.classList.add('active');
         document.body.style.overflow = 'hidden';
+    });
+
+    // Tab switching
+    document.querySelectorAll('.modal-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+            const target = tab.dataset.tab;
+            document.querySelectorAll('.modal-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+            tab.classList.add('active');
+            if (target === 'story') document.getElementById('tabStory').classList.add('active');
+            if (target === 'stats') document.getElementById('tabStats').classList.add('active');
+            if (target === 'tactics') document.getElementById('tabTactics').classList.add('active');
+        });
     });
 
     function closeModal() {
@@ -1016,14 +1266,17 @@ function initCinemaControls() {
     });
 }
 
-// ===== 12. AI GENERATOR =====
+// ===== 12. AI ANIME STUDIO & VIDEO GENERATOR =====
 function initGenerator() {
     const charContainer = document.getElementById('characterSelect');
     const styleBtns = document.querySelectorAll('.style-btn');
     const sceneBtns = document.querySelectorAll('.scene-btn');
     const generateBtn = document.getElementById('generateBtn');
+    const generateVideoBtn = document.getElementById('generateVideoBtn');
+    const previewPlayBtn = document.getElementById('previewPlayBtn');
 
     let selectedCharId = allCharacters[0].id;
+    let selectedStyleName = 'Ufotable Action';
 
     if (charContainer) {
         charContainer.addEventListener('click', e => {
@@ -1039,6 +1292,7 @@ function initGenerator() {
         btn.addEventListener('click', () => {
             styleBtns.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
+            selectedStyleName = btn.textContent.trim();
         });
     });
 
@@ -1068,8 +1322,8 @@ function initGenerator() {
                 const previewDesc = document.getElementById('previewDesc');
 
                 if (previewImg) previewImg.src = char.image;
-                if (previewName) previewName.textContent = char.name;
-                if (previewDesc) previewDesc.textContent = `${char.role} • ${char.eraText} — Rendered with historically researched anime detail.`;
+                if (previewName) previewName.textContent = `${char.name} (${selectedStyleName})`;
+                if (previewDesc) previewDesc.textContent = `${char.role} • ${char.eraText} — Rendered with historically researched anime detail & ${selectedStyleName} aesthetics.`;
 
                 if (placeholder) placeholder.style.display = 'none';
                 if (result) {
@@ -1083,9 +1337,21 @@ function initGenerator() {
             }, 1800);
         });
     }
+
+    if (generateVideoBtn) {
+        generateVideoBtn.addEventListener('click', () => {
+            startCinema(selectedCharId);
+        });
+    }
+
+    if (previewPlayBtn) {
+        previewPlayBtn.addEventListener('click', () => {
+            startCinema(selectedCharId);
+        });
+    }
 }
 
-// ===== 13. TIMELINE & SCROLL REVEAL =====
+// ===== 13. TIMELINE SCROLL REVEAL =====
 function initTimelineScroll() {
     const items = document.querySelectorAll('.timeline-item');
     const obs = new IntersectionObserver(entries => {
@@ -1098,9 +1364,10 @@ function initTimelineScroll() {
     items.forEach(item => obs.observe(item));
 }
 
-// ===== 14. INITIALIZE ALL ON LOAD =====
+// ===== 14. INITIALIZATION =====
 document.addEventListener('DOMContentLoaded', () => {
     populateGallery();
+    populateTactics();
     populateVideos();
     populateGenerator();
     populateTimeline();
